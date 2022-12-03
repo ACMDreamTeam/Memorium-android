@@ -1,4 +1,4 @@
-package com.margs.memorium;
+package com.acmdreamteam.memorium;
 
 import org.junit.Test;
 

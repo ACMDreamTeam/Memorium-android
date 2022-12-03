@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.margs.memorium'
+    namespace 'com.acmdreamteam.memorium'
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.margs.memorium"
+        applicationId "com.acmdreamteam.memorium"
         minSdk 21
         targetSdk 32
         versionCode 1
@@ -36,4 +36,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+
+    implementation 'com.google.firebase:firebase-auth:21.1.0'
+    implementation 'com.google.android.gms:play-services-auth:20.4.0'
 }
