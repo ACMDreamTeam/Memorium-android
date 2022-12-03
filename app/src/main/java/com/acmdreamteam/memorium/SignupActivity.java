@@ -12,13 +12,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,11 +37,13 @@ public class SignupActivity extends AppCompatActivity {
 
     AppCompatButton submit;
 
-    Spinner genderspinner;
+    RadioButton male,female;
+
 
     String gender;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,38 +56,10 @@ public class SignupActivity extends AppCompatActivity {
 
         submit = findViewById(R.id.submit);
 
-        genderspinner =findViewById(R.id.gender_item);
-
-        ArrayAdapter<CharSequence>adapter= ArrayAdapter.createFromResource(this, R.array.Gender, android.R.layout.simple_spinner_item);
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-
-        genderspinner.setAdapter(adapter);
-
-
-        if(genderspinner != null){
-            genderspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    String item_position = String.valueOf(position);
-                    int itemposition = Integer.parseInt(item_position);
-                    String gender = String.valueOf(genderspinner.getAdapter().getItem(position));
-                    Log.e("selected position",""+itemposition);
-                    Log.e("selected Text",gender);
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
-                }
-            });
-        }
-
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
                 submit_Data();
             }
@@ -91,7 +71,35 @@ public class SignupActivity extends AppCompatActivity {
 
     }
 
+    public void onGenderSelect(View view){
+        switch (view.getId()){
+
+            case R.id.male:
+                if (male.isChecked()){
+
+                    gender = "male";
+
+                }
+                break;
+
+            case R.id.female:
+                if (female.isChecked()){
+
+                    gender = "female";
+
+
+                }
+                break;
+
+
+
+
+        }
+    }
+
     private void submit_Data() {
+
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         Map<String, String> user = new HashMap<>();
         user.put("username", username_.getText().toString());
@@ -99,15 +107,14 @@ public class SignupActivity extends AppCompatActivity {
         user.put("gender",gender);
 
 
-        db.collection("users")
-                .add(user)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        db.collection("users").document(firebaseUser.getUid())
+                .set(user)
+                .addOnSuccessListener(new OnSuccessListener() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-
+                    public void onSuccess(Object o) {
                         startActivity(new Intent(SignupActivity.this,QuestionnaireActivity.class));
                     }
+
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override

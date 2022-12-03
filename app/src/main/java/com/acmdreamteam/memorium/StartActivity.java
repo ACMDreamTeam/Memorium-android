@@ -64,6 +64,7 @@ public class StartActivity extends AppCompatActivity {
         signInButton.setOnClickListener(v -> {
             Intent intent = googleSignInClient.getSignInIntent();
             startActivityForResult(intent,100);
+            googleSignLoader.setVisibility(View.VISIBLE);
 
         });
 
@@ -92,56 +93,15 @@ public class StartActivity extends AppCompatActivity {
                                 .addOnCompleteListener(task -> {
                                     if(task.isSuccessful()){
                                         String s = "Google Authentication successful";
-                                        googleSignLoader.setVisibility(View.VISIBLE);
+                                        googleSignLoader.setVisibility(View.INVISIBLE);
                                         displayToast(s);
+
 
                                         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                                         assert firebaseUser != null;
 
 
                                         startActivity(new Intent(StartActivity.this,SignupActivity.class));
-                                        /*
-                                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
-
-                                        String userid = firebaseUser.getDisplayName();
-                                        String username = firebaseUser.getDisplayName();
-                                        String imageurl;
-
-                                        Calendar calendar = Calendar.getInstance();
-                                        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yy");
-                                        String timestamp = simpleDateFormat.format(calendar.getTime());
-
-                                        Uri imageuri = firebaseUser.getPhotoUrl();
-                                        assert imageuri != null;
-                                        imageurl = imageuri.toString();
-                                        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                                                if(!snapshot.exists()){
-                                                    HashMap<String, Object> hashMap = new HashMap<>();
-                                                    hashMap.put("id", userid);
-                                                    hashMap.put("username", username);
-                                                    hashMap.put("imageURL", imageurl);
-                                                    hashMap.put("joined_on",timestamp);
-                                                    reference.updateChildren(hashMap).addOnCompleteListener(task1 -> startActivity(new Intent(StartActivity.this, google_setupActivity.class)
-                                                            .putExtra("method","google")
-                                                            .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)));
-                                                }else {
-                                                    startActivity(new Intent(StartActivity.this,google_setupActivity.class)
-                                                            .putExtra("method","google")
-                                                            .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-                                                }
-                                            }
-
-                                            @Override
-                                            public void onCancelled(@NonNull DatabaseError error) {
-
-                                            }
-                                        });
-
-                                         */
-
 
 
 
