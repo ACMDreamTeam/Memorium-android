@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -59,6 +60,10 @@ public class SignupActivity extends AppCompatActivity {
         submit = findViewById(R.id.submit);
 
 
+        male = findViewById(R.id.male);
+        female = findViewById(R.id.female);
+
+
 
 
 
@@ -66,21 +71,24 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                user = new User(username_.getText().toString(),age_.getText().toString(),gender,"");
+                //user = new User(username_.getText().toString(),age_.getText().toString(),gender,"");
 
-                Log.d("name",username_.getText().toString());
+                //Log.d("name",username_.getText().toString());
 
+                /*
 
                 Intent intent = new Intent();
                 intent.putExtra("object",user);
                 intent.setClass(SignupActivity.this,QuestionnaireActivity.class);
                 startActivity(intent);
 
+                 */
 
 
 
 
-                //submit_Data();
+
+                submit_Data();
             }
         });
 
@@ -90,11 +98,12 @@ public class SignupActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("NonConstantResourceId")
     public void onGenderSelect(View view){
-        switch (view.getId()){
+        switch (view.getId()) {
 
             case R.id.male:
-                if (male.isChecked()){
+                if (male.isChecked()) {
 
                     gender = "male";
 
@@ -102,14 +111,13 @@ public class SignupActivity extends AppCompatActivity {
                 break;
 
             case R.id.female:
-                if (female.isChecked()){
+                if (female.isChecked()) {
 
                     gender = "female";
 
 
                 }
                 break;
-
 
 
 

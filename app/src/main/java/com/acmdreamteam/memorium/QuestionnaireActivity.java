@@ -56,19 +56,11 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
 
 
-        user = (User) getIntent().getExtras().getSerializable("object");
+        //user = (User) getIntent().getExtras().getSerializable("object");
 
-        String name = user.getName();
+        //String name = user.getName();
 
-        Log.d("Data", name);
-
-
-
-
-
-
-
-
+       // Log.d("Data", name);
 
 
     }
@@ -79,9 +71,8 @@ public class QuestionnaireActivity extends AppCompatActivity {
             case R.id.yes:
                 if (yes.isChecked()){
 
-                    user.setMarried("True");
 
-                    /*
+
                     HashMap<String,String> data = new HashMap<>();
                     data.put("Married","Yes");
 
@@ -89,15 +80,14 @@ public class QuestionnaireActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void unused) {
                             Toast.makeText(getApplicationContext(),"Updated",Toast.LENGTH_SHORT).show();
+
                         }
                     });
 
-                     */
+                    married.setVisibility(View.INVISIBLE);
+                    siblings.setVisibility(View.VISIBLE);
 
-                    Intent intent = new Intent();
-                    intent.putExtra("object",user);
-                    intent.setClass(QuestionnaireActivity.this,MainActivity.class);
-                    startActivity(intent);
+
 
 
                 }
@@ -105,7 +95,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
             case R.id.no:
                 if (no.isChecked()){
-                    /*
+
                     HashMap<String,String> data = new HashMap<>();
                     data.put("Married","No");
 
@@ -113,16 +103,15 @@ public class QuestionnaireActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void unused) {
                             Toast.makeText(getApplicationContext(),"Updated",Toast.LENGTH_SHORT).show();
+
                         }
                     });
 
-                     */
-                    user.setMarried("False");
+                    married.setVisibility(View.INVISIBLE);
+                    siblings.setVisibility(View.VISIBLE);
 
-                    Intent intent = new Intent();
-                    intent.putExtra("object",user);
-                    intent.setClass(QuestionnaireActivity.this,MainActivity.class);
-                    startActivity(intent);
+
+
 
 
 
@@ -132,7 +121,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
             case R.id.notSure:
                 if (notSure.isChecked()){
 
-                    /*
+
                     HashMap<String,String> data = new HashMap<>();
                     data.put("Married","Not Sure");
 
@@ -140,17 +129,13 @@ public class QuestionnaireActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void unused) {
                             Toast.makeText(getApplicationContext(),"Updated",Toast.LENGTH_SHORT).show();
+
                         }
                     });
 
-                     */
+                    married.setVisibility(View.INVISIBLE);
+                    siblings.setVisibility(View.VISIBLE);
 
-                    user.setMarried("NotSure");
-
-                    Intent intent = new Intent();
-                    intent.putExtra("object",user);
-                    intent.setClass(QuestionnaireActivity.this,MainActivity.class);
-                    startActivity(intent);
 
 
 
