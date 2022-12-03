@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignupActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:id="@+id/username_item"
+        android:layout_height="90dp"
+        app:counterEnabled="true"
+        app:boxCornerRadiusBottomEnd="15dp"
+        app:boxCornerRadiusBottomStart="15dp"
+        app:boxCornerRadiusTopEnd="15dp"
+        app:boxCornerRadiusTopStart="15dp"
+
+        app:boxBackgroundMode="outline"
+        android:layout_marginHorizontal="35dp"
+        android:layout_marginTop="10dp"
+
+        app:counterMaxLength="30"
+        >
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:maxLength="30"
+            android:layout_height="60dp"
+            android:hint="Username..."/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+</RelativeLayout>

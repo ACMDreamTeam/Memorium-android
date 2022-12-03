@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "909712011152-of9nidkqbmhhq52tn6501e1sb66rini8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.acmdreamteam.memorium",
+            "certificate_hash": "6afdd42d581b64a0079129087d88a4621d3b7630"
+          }
+        },
+        {
           "client_id": "909712011152-b500qorah01hr3f5ln7nq6nsie6git5u.apps.googleusercontent.com",
           "client_type": 3
         }
