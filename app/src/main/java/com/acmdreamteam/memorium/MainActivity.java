@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView name;
 
-    CardView recollect,add;
+    CardView recollect,add,scan;
 
 
     @Override
@@ -62,6 +62,15 @@ public class MainActivity extends AppCompatActivity {
 
         recollect = findViewById(R.id.recollect);
         add = findViewById(R.id.add);
+
+        scan = findViewById(R.id.scan);
+
+        scan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, MedicineReminder.class));
+            }
+        });
 
 
         add.setOnClickListener(new View.OnClickListener() {
@@ -108,5 +117,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+        homeIntent.addCategory( Intent.CATEGORY_HOME );
+        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(homeIntent);
+    }
 }

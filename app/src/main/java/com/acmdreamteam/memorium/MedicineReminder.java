@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,53 +19,37 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddActivity extends AppCompatActivity {
+public class MedicineReminder extends AppCompatActivity {
+
+    EditText name,number,dur;
+
+    RadioButton Daily,weekly,before_food,After_food;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    FirebaseUser firebaseUser;
+    FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-    EditText username;
-
-    RadioButton journal,reminder,low,medium,high;
-
-    String type;
-
-    int priority;
-
-    DateFormat df;
+    String frequency;
+    boolean food;
 
     AppCompatButton submit;
-
-    String sDate;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add);
-
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        setContentView(R.layout.activity_medicine_reminder);
 
 
-        username = findViewById(R.id.username);
+        name = findViewById(R.id.name);
+        number = findViewById(R.id.number);
+        dur = findViewById(R.id.duration);
 
-        Date d = Calendar.getInstance().getTime();
-        DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
-        sDate = df.format(d);
-
-        journal = findViewById(R.id.journal);
-        reminder = findViewById(R.id.reminder);
-
-        low = findViewById(R.id.low);
-        medium = findViewById(R.id.medium);
-        high = findViewById(R.id.high);
+        Daily = findViewById(R.id.daily);
+        weekly = findViewById(R.id.weekly);
+        before_food = findViewById(R.id.bfood);
+        After_food = findViewById(R.id.afood);
 
         submit = findViewById(R.id.submit);
 
@@ -78,60 +61,41 @@ public class AddActivity extends AppCompatActivity {
         });
 
 
-
-
-    }
-
-    @SuppressLint("NonConstantResourceId")
-    public void onPrioritySelect(View view){
-        switch (view.getId()) {
-
-            case R.id.low:
-                if (low.isChecked()) {
-
-                    priority = 1;
-
-                }
-                break;
-
-            case R.id.medium:
-                if (medium.isChecked()) {
-
-                    priority = 2;
-
-
-                }
-                break;
-            case R.id.high:
-                if (high.isChecked()) {
-
-                    priority = 3;
-
-
-                }
-                break;
-
-
-
-        }
     }
 
     @SuppressLint("NonConstantResourceId")
     public void onReminderSelect(View view){
         switch (view.getId()) {
 
-            case R.id.journal:
-                if (journal.isChecked()) {
+            case R.id.daily:
+                if (Daily.isChecked()) {
 
-                    type = "journal";
+                    frequency = "Daily";
 
                 }
                 break;
 
-            case R.id.reminder:
-                if (reminder.isChecked()) {
+            case R.id.weekly:
+                if (weekly.isChecked()) {
 
-                    type = "reminder";
+                    frequency = "Weekly";
+
+
+                }
+                break;
+
+            case R.id.bfood:
+                if (before_food.isChecked()) {
+
+                    food = false;
+
+
+                }
+                break;
+            case R.id.afood:
+                if (After_food.isChecked()) {
+
+                    food = true;
 
 
                 }
@@ -142,17 +106,21 @@ public class AddActivity extends AppCompatActivity {
         }
     }
 
+
+
+
     private void submitData() {
 
 
         Map<String, Object> journal = new HashMap<>();
-        journal.put("things", username.getText().toString());
-        journal.put("date", sDate);
-        journal.put("type",type);
-        journal.put("priority",priority);
+        journal.put("name", name.getText().toString());
+        journal.put("number", number.getText().toString());
+        journal.put("dur",dur.getText().toString());
+        journal.put("frequency", frequency);
+        journal.put("food",food);
 
 
-        db.collection("journal").document(firebaseUser.getUid())
+        db.collection("Medications").document(firebaseUser.getUid())
                 .set(journal)
                 .addOnSuccessListener(new OnSuccessListener() {
                     @Override

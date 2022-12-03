@@ -32,17 +32,26 @@ public class StartActivity extends AppCompatActivity {
 
     ProgressBar googleSignLoader;
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if(firebaseUser != null){
+            startActivity(new Intent(StartActivity.this,MainActivity.class));
+
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
 
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        if(firebaseUser != null){
-
-        }
 
 
         googleSignLoader = findViewById(R.id.googleSignLoader);

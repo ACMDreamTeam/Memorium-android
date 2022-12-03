@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F4F4F4"
     tools:context=".AddActivity">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -55,15 +56,73 @@
             android:id="@+id/reminder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onGenderSelect"
+            android:onClick="onReminderSelect"
             android:text="Reminder"/>
         <RadioButton
             android:id="@+id/journal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onGenderSelect"
+            android:onClick="onReminderSelect"
             android:text="Journal"/>
 
     </RadioGroup>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="How frequently you want to get reminded?"
+        android:layout_below="@+id/rem"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:textSize="25dp"
+        android:textColor="#000000"/>
+
+    <RadioGroup
+
+        android:id="@+id/priority"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/title"
+        android:layout_marginHorizontal="25dp">
+        <RadioButton
+            android:id="@+id/low"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onPrioritySelect"
+            android:text="Low"/>
+        <RadioButton
+            android:id="@+id/medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onPrioritySelect"
+            android:text="Medium"/>
+
+        <RadioButton
+            android:id="@+id/high"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onPrioritySelect"
+            android:text="High"/>
+
+
+
+    </RadioGroup>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/priority"
+        android:text="Submit"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/primary_btn"
+        android:textColor="#fff"/>
+
+
 
 </RelativeLayout>
