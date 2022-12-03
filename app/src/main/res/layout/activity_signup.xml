@@ -6,9 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".SignupActivity">
 
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter personal details"
+        android:layout_centerHorizontal="true"
+        android:textColor="#000000"
+        android:textSize="30dp"
+        android:layout_marginTop="50dp"/>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:id="@+id/username_item"
+
+        android:layout_below="@+id/title"
         android:layout_height="90dp"
         app:counterEnabled="true"
         app:boxCornerRadiusBottomEnd="15dp"
@@ -18,7 +30,7 @@
 
         app:boxBackgroundMode="outline"
         android:layout_marginHorizontal="35dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="35dp"
 
         app:counterMaxLength="30"
         >
@@ -28,7 +40,87 @@
             android:layout_width="match_parent"
             android:maxLength="30"
             android:layout_height="60dp"
-            android:hint="Username..."/>
+            android:hint="Name"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:id="@+id/age_item"
+        android:layout_below="@+id/username_item"
+        android:layout_height="90dp"
+        app:counterEnabled="false"
+        app:boxCornerRadiusBottomEnd="15dp"
+        app:boxCornerRadiusBottomStart="15dp"
+        app:boxCornerRadiusTopEnd="15dp"
+        app:boxCornerRadiusTopStart="15dp"
+
+        app:boxBackgroundMode="outline"
+        android:layout_marginHorizontal="35dp"
+        android:layout_marginTop="35dp"
+
+        app:counterMaxLength="30"
+        >
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/age"
+            android:layout_width="match_parent"
+            android:maxLength="30"
+            android:inputType="number"
+            android:layout_height="60dp"
+            android:hint="Age"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/age_item"
+        android:id="@+id/gender_item"
+        android:layout_height="90dp"
+        app:counterEnabled="true"
+        app:boxCornerRadiusBottomEnd="15dp"
+        app:boxCornerRadiusBottomStart="15dp"
+        app:boxCornerRadiusTopEnd="15dp"
+        app:boxCornerRadiusTopStart="15dp"
+
+        app:boxBackgroundMode="outline"
+        android:layout_marginHorizontal="35dp"
+        android:layout_marginTop="50dp"
+
+        app:counterMaxLength="30"
+        >
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/gender"
+            android:layout_width="match_parent"
+            android:maxLength="30"
+            android:layout_height="60dp"
+            android:hint="Gender"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    -->
+
+    <Spinner
+        android:id="@+id/gender_item"
+
+        android:layout_below="@+id/age_item"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="35dp"
+        android:layout_height="60dp"
+        android:popupBackground="@drawable/spinner_back"
+        android:background="@drawable/spinner_back"
+        android:spinnerMode="dialog"/>
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gender_item"
+        android:text="Submit"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/primary_btn"
+        android:textColor="#fff"/>
 </RelativeLayout>

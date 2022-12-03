@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Memorium</string>
+
+
+    <string-array name="Gender">
+        <item>Select Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+
+    </string-array>
 </resources>
