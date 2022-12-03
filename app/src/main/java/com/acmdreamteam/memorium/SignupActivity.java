@@ -44,6 +44,8 @@ public class SignupActivity extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    User user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +59,28 @@ public class SignupActivity extends AppCompatActivity {
         submit = findViewById(R.id.submit);
 
 
+
+
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                submit_Data();
+                user = new User(username_.getText().toString(),age_.getText().toString(),gender,"");
+
+                Log.d("name",username_.getText().toString());
+
+
+                Intent intent = new Intent();
+                intent.putExtra("object",user);
+                intent.setClass(SignupActivity.this,QuestionnaireActivity.class);
+                startActivity(intent);
+
+
+
+
+
+                //submit_Data();
             }
         });
 

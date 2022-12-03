@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -28,6 +29,11 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+
+    SignupActivity signupActivity;
+
+    User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +56,18 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
 
 
+        user = (User) getIntent().getExtras().getSerializable("object");
+
+        String name = user.getName();
+
+        Log.d("Data", name);
+
+
+
+
+
+
+
 
 
 
@@ -60,6 +78,10 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
             case R.id.yes:
                 if (yes.isChecked()){
+
+                    user.setMarried("True");
+
+                    /*
                     HashMap<String,String> data = new HashMap<>();
                     data.put("Married","Yes");
 
@@ -70,9 +92,12 @@ public class QuestionnaireActivity extends AppCompatActivity {
                         }
                     });
 
-                    married.setVisibility(View.INVISIBLE);
-                    siblings.setVisibility(View.VISIBLE);
+                     */
 
+                    Intent intent = new Intent();
+                    intent.putExtra("object",user);
+                    intent.setClass(QuestionnaireActivity.this,MainActivity.class);
+                    startActivity(intent);
 
 
                 }
@@ -80,6 +105,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
             case R.id.no:
                 if (no.isChecked()){
+                    /*
                     HashMap<String,String> data = new HashMap<>();
                     data.put("Married","No");
 
@@ -90,6 +116,15 @@ public class QuestionnaireActivity extends AppCompatActivity {
                         }
                     });
 
+                     */
+                    user.setMarried("False");
+
+                    Intent intent = new Intent();
+                    intent.putExtra("object",user);
+                    intent.setClass(QuestionnaireActivity.this,MainActivity.class);
+                    startActivity(intent);
+
+
 
                 }
                 break;
@@ -97,6 +132,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
             case R.id.notSure:
                 if (notSure.isChecked()){
 
+                    /*
                     HashMap<String,String> data = new HashMap<>();
                     data.put("Married","Not Sure");
 
@@ -106,6 +142,15 @@ public class QuestionnaireActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),"Updated",Toast.LENGTH_SHORT).show();
                         }
                     });
+
+                     */
+
+                    user.setMarried("NotSure");
+
+                    Intent intent = new Intent();
+                    intent.putExtra("object",user);
+                    intent.setClass(QuestionnaireActivity.this,MainActivity.class);
+                    startActivity(intent);
 
 
 

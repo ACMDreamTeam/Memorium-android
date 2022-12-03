@@ -1,16 +1,21 @@
 package com.acmdreamteam.memorium;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     private String name,age,gender,married,sibling;
 
 
-    public User(String name, String age, String gender, String married, String sibling) {
+    public User(String name, String age, String gender, String married) {
         this.name = name;
         this.age = age;
         this.gender = gender;
         this.married = married;
-        this.sibling = sibling;
+    }
+
+    public User() {
+
     }
 
     public String getName() {
@@ -45,11 +50,5 @@ public class User {
         this.married = married;
     }
 
-    public String getSibling() {
-        return sibling;
-    }
 
-    public void setSibling(String sibling) {
-        this.sibling = sibling;
-    }
 }
