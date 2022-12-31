@@ -3,12 +3,17 @@ package com.acmdreamteam.memorium;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.TextView;
 
 import com.acmdreamteam.memorium.Adapter.JournalAdapter;
@@ -33,23 +38,27 @@ public class RecollectActivity extends AppCompatActivity {
 
     TextView name,age,marsta,sibsta;
 
-    RecyclerView recyclerView;
+    //RecyclerView recyclerView;
 
 
     private ArrayList<Journal> mJournal;
 
     private JournalAdapter journalAdapter;
 
+    CardView journal_card;
+
     FirebaseFirestore firestore;
 
     FirebaseUser firebaseUser;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recollect);
 
 
+        journal_card = findViewById(R.id.journal_card);
 
 
         name = findViewById(R.id.name);
@@ -57,8 +66,8 @@ public class RecollectActivity extends AppCompatActivity {
         marsta = findViewById(R.id.marsta);
         sibsta = findViewById(R.id.sibsta);
 
-        recyclerView = findViewById(R.id.recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //recyclerView = findViewById(R.id.recyclerview);
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         firestore = FirebaseFirestore.getInstance();
 
@@ -92,6 +101,29 @@ public class RecollectActivity extends AppCompatActivity {
 
         EventChangeListener();
 
+        journal_card.setOnTouchListener(new View.OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN)  {
+                    journal_card.setCardBackgroundColor(getResources().getColor(R.color.primary));
+
+                }else {
+                    journal_card.setCardBackgroundColor(getResources().getColor(R.color.secondary));
+
+                }
+                return false;
+            }
+        });
+
+        journal_card.setOnClickListener(v -> {
+            Intent intent = new Intent(RecollectActivity.this, JournalViewActivity.class);
+
+            startActivity(intent);
+
+
+        });
+
 
 
     }
@@ -111,7 +143,7 @@ public class RecollectActivity extends AppCompatActivity {
                             }
 
                             journalAdapter = new JournalAdapter(getApplicationContext(),firebaseUser,mJournal);
-                            recyclerView.setAdapter(journalAdapter);
+                            //recyclerView.setAdapter(journalAdapter);
                             journalAdapter.notifyDataSetChanged();
                         }
                     }

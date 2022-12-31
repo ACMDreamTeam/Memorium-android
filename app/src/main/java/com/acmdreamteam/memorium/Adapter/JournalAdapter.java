@@ -80,6 +80,7 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
 
+        TextView title = itemView.findViewById(R.id.title);
         TextView date = itemView.findViewById(R.id.date);
         TextView description = itemView.findViewById(R.id.description);
 

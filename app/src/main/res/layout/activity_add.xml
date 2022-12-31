@@ -13,7 +13,7 @@
 
 
     <EditText
-        android:id="@+id/title"
+        android:id="@+id/title1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <RadioGroup
@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@+id/ques"
+        android:layout_below="@+id/title1"
         android:layout_marginHorizontal="25dp">
         <RadioButton
             android:id="@+id/reminder"
@@ -41,7 +41,7 @@
     </RadioGroup>
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/title2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="How frequently you want to get reminded?"
@@ -58,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@+id/title"
+        android:layout_below="@+id/title2"
         android:layout_marginHorizontal="25dp">
         <RadioButton
             android:id="@+id/low"
