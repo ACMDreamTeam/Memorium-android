@@ -2,7 +2,9 @@ package com.acmdreamteam.memorium.Model;
 
 public class Journal {
 
-    String things,date,type,priority;
+    String things,date,type;
+
+    String priority;
 
     public Journal(String things, String date, String type, String priority) {
         this.things = things;
@@ -37,6 +39,7 @@ public class Journal {
     public void setType(String type) {
         this.type = type;
     }
+
 
     public String getPriority() {
         return priority;

@@ -33,7 +33,7 @@ public class MedicineReminder extends AppCompatActivity {
     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
     String frequency;
-    boolean food;
+    String food;
 
     AppCompatButton submit;
     @Override
@@ -87,7 +87,7 @@ public class MedicineReminder extends AppCompatActivity {
             case R.id.bfood:
                 if (before_food.isChecked()) {
 
-                    food = false;
+                    food = "false";
 
 
                 }
@@ -95,7 +95,7 @@ public class MedicineReminder extends AppCompatActivity {
             case R.id.afood:
                 if (After_food.isChecked()) {
 
-                    food = true;
+                    food = "true";
 
 
                 }

@@ -4,12 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.acmdreamteam.memorium.Model.User;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -74,7 +74,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
 
                     HashMap<String,String> data = new HashMap<>();
-                    data.put("Married","Yes");
+                    data.put("Married","Married");
 
                     db.collection("users").document(firebaseUser.getUid()).set(data, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -97,7 +97,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
                 if (no.isChecked()){
 
                     HashMap<String,String> data = new HashMap<>();
-                    data.put("Married","No");
+                    data.put("Married","Single");
 
                     db.collection("users").document(firebaseUser.getUid()).set(data, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override

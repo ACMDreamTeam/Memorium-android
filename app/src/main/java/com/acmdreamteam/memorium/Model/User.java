@@ -1,4 +1,4 @@
-package com.acmdreamteam.memorium;
+package com.acmdreamteam.memorium.Model;
 
 import java.io.Serializable;
 

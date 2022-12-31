@@ -39,7 +39,7 @@ public class AddActivity extends AppCompatActivity {
 
     String type;
 
-    int priority;
+    String priority;
 
     DateFormat df;
 
@@ -89,7 +89,7 @@ public class AddActivity extends AppCompatActivity {
             case R.id.low:
                 if (low.isChecked()) {
 
-                    priority = 1;
+                    priority = "1";
 
                 }
                 break;
@@ -97,7 +97,7 @@ public class AddActivity extends AppCompatActivity {
             case R.id.medium:
                 if (medium.isChecked()) {
 
-                    priority = 2;
+                    priority = "2";
 
 
                 }
@@ -105,7 +105,7 @@ public class AddActivity extends AppCompatActivity {
             case R.id.high:
                 if (high.isChecked()) {
 
-                    priority = 3;
+                    priority = "3";
 
 
                 }
@@ -152,7 +152,7 @@ public class AddActivity extends AppCompatActivity {
         journal.put("priority",priority);
 
 
-        db.collection("journal").document(firebaseUser.getUid())
+        db.collection("journal").document(firebaseUser.getUid()).collection(type).document()
                 .set(journal)
                 .addOnSuccessListener(new OnSuccessListener() {
                     @Override

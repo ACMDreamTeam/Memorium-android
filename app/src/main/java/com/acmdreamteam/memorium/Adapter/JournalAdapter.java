@@ -24,22 +24,21 @@ import java.util.HashMap;
 public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.ViewHolder> {
 
     private final Context mContext;
-    String things,date,type,priority;
+
     private final FirebaseUser firebaseUser;
 
-    private final ArrayList<Journal> journalArrayList;
+
+
+    private ArrayList<Journal> mJournal;
 
 
 
-    public JournalAdapter(Context mContext, FirebaseUser firebaseUser, String things, String date, String type, String priority, ArrayList<Journal> journalArrayList) {
+    public JournalAdapter(Context mContext, FirebaseUser firebaseUser,ArrayList<Journal> mJournal) {
        this.mContext = mContext;
        this.firebaseUser = firebaseUser;
-       this.things = things;
-       this.date = date;
-       this.type = type;
-       this.priority = priority;
-       this.journalArrayList = journalArrayList;
+       this.mJournal = mJournal;
     }
+
 
     @NonNull
     @Override
@@ -51,15 +50,17 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull JournalAdapter.ViewHolder holder, int position) {
 
-        final Journal journal = journalArrayList.get(position);
+
+        Journal journal = mJournal.get(position);
+    
 
 
-        String date,description;
-        date = journal.getThings();
-        description = journal.getThings();
 
-        holder.date.setText(date);
-        holder.description.setText(description);
+
+        holder.date.setText(journal.getDate());
+        holder.description.setText(journal.getThings());
+
+
 
 
 
@@ -72,7 +73,7 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return journalArrayList.size();
+        return mJournal.size();
 
     }
 

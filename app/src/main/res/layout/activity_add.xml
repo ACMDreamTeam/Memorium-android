@@ -7,42 +7,15 @@
     android:background="#F4F4F4"
     tools:context=".AddActivity">
 
-    <com.google.android.material.textfield.TextInputLayout
+
+
+
+
+
+    <EditText
+        android:id="@+id/title"
         android:layout_width="match_parent"
-        android:id="@+id/username_item"
-        android:layout_height="90dp"
-        app:counterEnabled="false"
-        app:boxCornerRadiusBottomEnd="15dp"
-        app:boxCornerRadiusBottomStart="15dp"
-        app:boxCornerRadiusTopEnd="15dp"
-        app:boxCornerRadiusTopStart="15dp"
-
-        app:boxBackgroundMode="outline"
-        android:layout_marginHorizontal="35dp"
-        android:layout_marginTop="35dp"
-
-        app:counterMaxLength="30"
-        >
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:maxLength="30"
-            android:layout_height="60dp"
-            android:hint="Write something you want to remember."/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-
-    <TextView
-        android:layout_below="@+id/username_item"
-        android:textSize="25dp"
-        android:id="@+id/ques"
-        android:textColor="#000000"
-        android:layout_marginStart="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Is it a?"/>
+        android:layout_height="wrap_content"/>
     <RadioGroup
 
         android:id="@+id/rem"
