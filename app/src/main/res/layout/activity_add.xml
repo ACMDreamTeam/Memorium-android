@@ -7,15 +7,7 @@
     android:background="#F4F4F4"
     tools:context=".AddActivity">
 
-
-
-
-
-
-    <EditText
-        android:id="@+id/title1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+   <!--
     <RadioGroup
 
         android:id="@+id/rem"
@@ -84,17 +76,103 @@
 
     </RadioGroup>
 
+    -->
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/submit"
+
+
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/priority"
-        android:text="Submit"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/primary_btn"
-        android:textColor="#fff"/>
+
+        android:layout_marginTop="20dp"
+        android:rowCount="2"
+        android:columnCount="2"
+        android:layout_centerVertical="true"
+
+        >
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/journal"
+            android:layout_width="0dp"
+            android:layout_margin="10dp"
+            android:layout_columnWeight="1"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="5dp"
+            android:layout_height="180dp"
+            android:padding="10dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+
+                >
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/journal"
+                    app:tint="@color/primary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Journal"
+                    android:layout_below="@+id/image"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="20dp"
+                    android:textColor="@color/primary"
+                    />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/reminder"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="25dp"
+            android:layout_width="0dp"
+            app:cardElevation="5dp"
+            android:layout_columnWeight="1"
+            android:layout_height="180dp"
+            android:padding="10dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+
+                >
+
+                <ImageView
+                    android:id="@+id/image2"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/reminder"
+                    app:tint="@color/primary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reminder"
+                    android:layout_below="@+id/image2"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/primary"
+                    />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </GridLayout>
 
 
 

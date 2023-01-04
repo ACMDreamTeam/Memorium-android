@@ -5,16 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-
     android:background="#E6E6E6">
-
 
     <include
         android:id="@+id/toolbar"
         layout="@layout/activity_toolbar"/>
-
-
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/something"
@@ -33,7 +28,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
+                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:textAlignment="center"
+                android:fontFamily="@font/nunito_sans"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="10dp"
                 android:textSize="30dp"
