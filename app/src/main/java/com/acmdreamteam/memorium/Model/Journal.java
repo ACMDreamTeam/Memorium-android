@@ -6,14 +6,37 @@ public class Journal {
 
     String priority;
 
-    public Journal(String things, String date, String type, String priority) {
+    String journalID;
+
+    String title;
+
+    public Journal(String things, String date, String type, String priority,String journalID,String title) {
         this.things = things;
         this.date = date;
         this.type = type;
         this.priority = priority;
+        this.journalID = journalID;
+        this.title = title;
     }
 
     public Journal() {
+    }
+
+
+    public String getJournalID() {
+        return journalID;
+    }
+
+    public void setJournalID(String journalID) {
+        this.journalID = journalID;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getThings() {

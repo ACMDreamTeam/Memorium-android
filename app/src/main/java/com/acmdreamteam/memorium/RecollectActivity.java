@@ -106,10 +106,10 @@ public class RecollectActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN)  {
-                    journal_card.setCardBackgroundColor(getResources().getColor(R.color.primary));
+                    journal_card.setCardBackgroundColor(getResources().getColor(R.color.onClick));
 
                 }else {
-                    journal_card.setCardBackgroundColor(getResources().getColor(R.color.secondary));
+                    journal_card.setCardBackgroundColor(getResources().getColor(R.color.white));
 
                 }
                 return false;
@@ -148,5 +148,12 @@ public class RecollectActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        startActivity(new Intent(RecollectActivity.this, MainActivity.class));
     }
 }

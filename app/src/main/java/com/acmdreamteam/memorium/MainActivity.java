@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView name;
 
-    CardView recollect,add,scan;
+    CardView recollect,add,scan,medrem;
 
 
     @Override
@@ -65,10 +65,12 @@ public class MainActivity extends AppCompatActivity {
 
         scan = findViewById(R.id.scan);
 
+        medrem = findViewById(R.id.medrem);
+
         scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, MedicineReminder.class));
+                startActivity(new Intent(MainActivity.this,Camera.class));
             }
         });
 
@@ -86,6 +88,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, RecollectActivity.class));
             }
         });
+
+        medrem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, MedicineReminder.class));
+            }
+        });
+
+
 
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();

@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="85dp"
 
     tools:context=".ToolbarActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:src="@drawable/ic_baseline_account_circle_24"/>
 
     <EditText
@@ -20,6 +20,7 @@
         android:drawableEnd="@drawable/ic_baseline_search_24"
         android:paddingEnd="15dp"
         android:paddingStart="15dp"
+        android:elevation="5dp"
         android:singleLine="true"
        />
 

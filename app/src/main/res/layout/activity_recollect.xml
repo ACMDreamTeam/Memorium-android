@@ -19,7 +19,7 @@
         android:layout_marginTop="20dp"
         app:cardCornerRadius="20dp"
 
-        app:cardBackgroundColor="@color/secondary"
+        app:cardBackgroundColor="@color/white"
         android:layout_height="wrap_content">
         <RelativeLayout
             android:layout_width="match_parent"
@@ -99,7 +99,7 @@
         android:layout_marginHorizontal="25dp"
         android:elevation="25dp"
         android:layout_below="@+id/personal_card"
-        app:cardBackgroundColor="@color/secondary"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="15dp"
         android:layout_marginTop="40dp"
         >
