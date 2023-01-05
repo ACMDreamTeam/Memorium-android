@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.api.Context;
@@ -38,6 +39,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -51,12 +53,21 @@ public class MainActivity extends AppCompatActivity {
 
     CardView recollect,add,scan,medrem;
 
+    CircleImageView profile_image;
+
+
+
+
+    FirebaseUser firebaseUser;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         name = findViewById(R.id.name);
 
@@ -66,6 +77,10 @@ public class MainActivity extends AppCompatActivity {
         scan = findViewById(R.id.scan);
 
         medrem = findViewById(R.id.medrem);
+
+        profile_image = findViewById(R.id.profile_image);
+
+
 
         scan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,8 +123,11 @@ public class MainActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
                         String Username = document.getString("username");
+                        String Imageurl = document.getString("imageURL");
 
                         name.setText("Welcome " + Username);
+
+                        Glide.with(getApplicationContext()).load(Imageurl).into(profile_image);
 
 
                     }

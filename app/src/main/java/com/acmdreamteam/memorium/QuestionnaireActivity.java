@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -21,13 +23,17 @@ import java.util.HashMap;
 public class QuestionnaireActivity extends AppCompatActivity {
 
 
-    LinearLayout married,siblings;
+    LinearLayout married,spouse_name,siblings;
+
+    EditText spouse_name_txt;
 
     RadioButton yes,no,notSure,yes_,no_,notSure_;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+    Button spouse_save;
 
 
     SignupActivity signupActivity;
@@ -52,6 +58,30 @@ public class QuestionnaireActivity extends AppCompatActivity {
         yes_ = findViewById(R.id.yes_);
         no_ = findViewById(R.id.no_);
         notSure_ = findViewById(R.id.notSure_);
+
+        spouse_name = findViewById(R.id.spouse_name);
+        spouse_save = findViewById(R.id.submit);
+        spouse_name_txt = findViewById(R.id.spouse_name_txt);
+
+
+        spouse_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = spouse_name_txt.getText().toString();
+                HashMap<String,String> data = new HashMap<>();
+                data.put("Spouse_Name",name);
+
+                db.collection("users").document(firebaseUser.getUid()).set(data, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        spouse_name.setVisibility(View.INVISIBLE);
+                        siblings.setVisibility(View.VISIBLE);
+                    }
+                });
+
+
+            }
+        });
 
 
 
@@ -79,13 +109,12 @@ public class QuestionnaireActivity extends AppCompatActivity {
                     db.collection("users").document(firebaseUser.getUid()).set(data, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
-                            Toast.makeText(getApplicationContext(),"Updated",Toast.LENGTH_SHORT).show();
 
                         }
                     });
 
                     married.setVisibility(View.INVISIBLE);
-                    siblings.setVisibility(View.VISIBLE);
+                    spouse_name.setVisibility(View.VISIBLE);
 
 
 

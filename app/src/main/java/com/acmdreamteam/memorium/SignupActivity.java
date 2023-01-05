@@ -126,6 +126,7 @@ public class SignupActivity extends AppCompatActivity {
         user.put("username", username_.getText().toString());
         user.put("age",age_.getText().toString());
         user.put("gender",gender);
+        user.put("imageURL","user");
 
 
         db.collection("users").document(firebaseUser.getUid())

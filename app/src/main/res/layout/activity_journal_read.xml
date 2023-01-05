@@ -7,9 +7,31 @@
     tools:context=".JournalReadActivity">
 
 
-    <include
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
         android:id="@+id/toolbar"
-        layout="@layout/activity_toolbar"/>
+        tools:context=".ToolbarActivity">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="25dp"
+            android:background="@drawable/search_view"
+            android:drawableEnd="@drawable/ic_baseline_search_24"
+            android:paddingEnd="15dp"
+            android:paddingStart="15dp"
+            android:elevation="5dp"
+            android:singleLine="true"
+            />
+
+    </androidx.appcompat.widget.Toolbar>
 
     <TextView
         android:id="@+id/title"

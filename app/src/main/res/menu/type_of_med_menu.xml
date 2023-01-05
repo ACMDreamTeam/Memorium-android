@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/tablet"
+        android:enabled="true"
+
+        android:title="Tablet"/>
+
+
+    <item
+        android:id="@+id/Syrup"
+        android:enabled="true"
+
+        android:title="Syrup"/>
+
+    <item
+        android:id="@+id/Injection"
+        android:enabled="true"
+
+        android:title="Injection"/>
+
+    <item
+        android:id="@+id/Powder"
+        android:enabled="true"
+
+        android:title="Powder"/>
+
+    <item
+        android:id="@+id/oinment"
+        android:enabled="true"
+
+        android:title="Oinment"/>
+
+    <item
+        android:id="@+id/other"
+        android:enabled="true"
+
+        android:title="Other"/>
+
+
+
+
+
+
+
+</menu>
