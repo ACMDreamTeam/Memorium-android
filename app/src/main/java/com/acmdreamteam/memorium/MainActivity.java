@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -37,6 +38,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.Objects;
 
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -107,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         medrem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, MedicineReminder.class));
+                startActivity(new Intent(MainActivity.this, MedicineReminderViewActivity.class));
             }
         });
 
@@ -117,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
         rootRef.collection("users").document(firebaseUser.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @SuppressLint("CheckResult")
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
@@ -127,20 +130,18 @@ public class MainActivity extends AppCompatActivity {
 
                         name.setText("Welcome " + Username);
 
-                        Glide.with(getApplicationContext()).load(Imageurl).into(profile_image);
+
+                        if(Objects.equals(Imageurl, "user")){
+                            Glide.with(getApplicationContext()).load(getApplicationContext().getDrawable(R.drawable.ic_baseline_account_circle_24)).into(profile_image);
+                        }else {
+                            Glide.with(getApplicationContext()).load(Imageurl).into(profile_image);
+                        }
 
 
                     }
                 }
             }
         });
-
-
-
-
-
-
-
 
 
     }

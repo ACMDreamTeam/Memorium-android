@@ -59,10 +59,6 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.ViewHold
 
 
         Journal journal = mJournal.get(position);
-    
-
-
-
 
         holder.title.setText(journal.getTitle());
         holder.date.setText(journal.getDate());

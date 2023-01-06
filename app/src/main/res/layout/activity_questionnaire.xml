@@ -61,6 +61,7 @@
         android:orientation="vertical"
         android:visibility="gone"
         android:layout_centerInParent="true"
+        android:animateLayoutChanges="true"
         android:gravity="center_horizontal">
         <TextView
             android:layout_width="wrap_content"

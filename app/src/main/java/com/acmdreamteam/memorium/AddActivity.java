@@ -5,6 +5,7 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.camera.core.processing.SurfaceProcessorNode;
 import androidx.cardview.widget.CardView;
 
 import android.annotation.SuppressLint;
@@ -72,46 +73,16 @@ public class AddActivity extends AppCompatActivity {
         reminder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Coming soo.",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(AddActivity.this,MedicineReminder.class));
             }
         });
 
 
 
-        Date d = Calendar.getInstance().getTime();
-        DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
-        sDate = df.format(d);
 
 
     }
 
 
 
-    private void submitData() {
-
-
-        Map<String, Object> journal = new HashMap<>();
-        journal.put("things", username.getText().toString());
-        journal.put("date", sDate);
-        journal.put("type",type);
-        journal.put("priority",priority);
-
-
-        db.collection("journal").document(firebaseUser.getUid()).collection(type).document()
-                .set(journal)
-                .addOnSuccessListener(new OnSuccessListener() {
-                    @Override
-                    public void onSuccess(Object o) {
-                        finish();
-                    }
-
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
-                    }
-                });
-
-    }
 }

@@ -193,7 +193,7 @@ public class MedicineReminder extends AppCompatActivity {
             case R.id.bfood:
                 if (before_food.isChecked()) {
 
-                    food = "false";
+                    food = "Before food";
 
 
                 }
@@ -201,7 +201,7 @@ public class MedicineReminder extends AppCompatActivity {
             case R.id.afood:
                 if (After_food.isChecked()) {
 
-                    food = "true";
+                    food = "After food";
 
 
                 }
@@ -222,7 +222,7 @@ public class MedicineReminder extends AppCompatActivity {
         Map<String, Object> journal = new HashMap<>();
         journal.put("name", Med_Name.getText().toString());
         journal.put("number", number.getText().toString());
-        journal.put("duration",Duration.getText().toString());
+        journal.put("time",Duration.getText().toString());
         journal.put("med_id",med_id);
         journal.put("med_type",med_type_txt);
         journal.put("weekday",weekday_txt);

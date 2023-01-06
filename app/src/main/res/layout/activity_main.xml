@@ -152,6 +152,7 @@
 
         </androidx.cardview.widget.CardView>
 
+
         <androidx.cardview.widget.CardView
             android:id="@+id/add"
             android:layout_below="@+id/scan"

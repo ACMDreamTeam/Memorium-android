@@ -41,7 +41,7 @@
                 android:layout_below="@+id/profile_image"
                 android:layout_marginTop="25dp"
                 android:textSize="22sp"
-                android:text=""
+                android:text="Name: Abid nafi"
                 android:layout_marginStart="10dp"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
             <TextView
                 android:id="@+id/age"
                 android:layout_below="@+id/name"
-
+                android:text="Age: 18"
                 android:layout_marginTop="25dp"
                 android:textSize="22sp"
                 android:layout_marginStart="10dp"
@@ -63,10 +63,12 @@
                 android:layout_below="@+id/age"
                 android:layout_marginTop="25dp"
                 android:textSize="22sp"
+                android:text=""
                 android:layout_marginStart="10dp"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
+
 
             <TextView
                 android:id="@+id/sibsta"

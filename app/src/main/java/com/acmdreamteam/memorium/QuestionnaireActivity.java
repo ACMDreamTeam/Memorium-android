@@ -61,7 +61,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
         spouse_name = findViewById(R.id.spouse_name);
         spouse_save = findViewById(R.id.submit);
-        spouse_name_txt = findViewById(R.id.spouse_name_txt);
+        spouse_name_txt = findViewById(R.id.name_txt);
 
 
         spouse_save.setOnClickListener(new View.OnClickListener() {

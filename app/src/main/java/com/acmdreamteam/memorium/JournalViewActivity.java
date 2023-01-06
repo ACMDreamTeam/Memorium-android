@@ -27,6 +27,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -78,7 +79,11 @@ public class JournalViewActivity extends AppCompatActivity {
 
 
 
-                        Glide.with(getApplicationContext()).load(Imageurl).into(profileImage);
+                        if(Objects.equals(Imageurl, "user")){
+                            Glide.with(getApplicationContext()).load(getApplicationContext().getDrawable(R.drawable.ic_baseline_account_circle_24)).into(profileImage);
+                        }else {
+                            Glide.with(getApplicationContext()).load(Imageurl).into(profileImage);
+                        }
 
 
                     }
@@ -100,11 +105,11 @@ public class JournalViewActivity extends AppCompatActivity {
 
     private void EventChangeListener() {
 
-        firestore.collection("journal").document(firebaseUser.getUid()).collection("journal")
+        firestore.collection("user_data").document(firebaseUser.getUid()).collection("journal")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @SuppressLint("NotifyDataSetChanged")
                     @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                    public void onEvent(QuerySnapshot value, FirebaseFirestoreException error) {
 
                         assert value != null;
                         for (DocumentChange documentChange : value.getDocumentChanges()){

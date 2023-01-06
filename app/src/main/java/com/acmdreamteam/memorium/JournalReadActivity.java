@@ -15,6 +15,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Objects;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class JournalReadActivity extends AppCompatActivity {
@@ -48,7 +50,7 @@ public class JournalReadActivity extends AppCompatActivity {
 
         profileImage = findViewById(R.id.profile_image);
 
-        firestore.collection("journal").document(firebaseUser.getUid()).collection("journal").document(journalID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        firestore.collection("user_data").document(firebaseUser.getUid()).collection("journal").document(journalID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
@@ -82,7 +84,11 @@ public class JournalReadActivity extends AppCompatActivity {
 
 
 
-                        Glide.with(getApplicationContext()).load(Imageurl).into(profileImage);
+                        if(Objects.equals(Imageurl, "user")){
+                            Glide.with(getApplicationContext()).load(getApplicationContext().getDrawable(R.drawable.ic_baseline_account_circle_24)).into(profileImage);
+                        }else {
+                            Glide.with(getApplicationContext()).load(Imageurl).into(profileImage);
+                        }
 
 
                     }

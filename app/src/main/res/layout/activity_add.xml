@@ -160,7 +160,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Reminder"
+                    android:text="Medicine Reminder"
                     android:layout_below="@+id/image2"
                     android:layout_centerHorizontal="true"
                     android:textSize="20dp"

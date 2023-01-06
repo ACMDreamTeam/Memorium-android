@@ -115,7 +115,7 @@ public class JournalAddActivity extends AppCompatActivity {
 
 
 
-        firestore.collection("journal").document(firebaseUser.getUid()).collection("journal").document(JournalID)
+        firestore.collection("user_data").document(firebaseUser.getUid()).collection("journal").document(JournalID)
                 .set(journal)
                 .addOnSuccessListener(new OnSuccessListener() {
                     @Override

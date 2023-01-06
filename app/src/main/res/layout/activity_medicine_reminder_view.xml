@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".JournalViewActivity"
-    android:background="#EDEDED">
+    tools:context=".MedicineReminderViewActivity">
 
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="85dp"
         android:id="@+id/toolbar"
-        >
+        tools:context=".ToolbarActivity">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
@@ -34,48 +33,47 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/greet"
+        android:layout_below="@+id/toolbar"
+        android:fontFamily="@font/nunito_sans"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="My Journal"
+        android:text="Good Morning"/>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_below="@+id/greet"
+        android:textSize="35sp"
         android:textColor="@color/black"
         android:fontFamily="@font/nunito_sans"
-        android:textStyle="bold"
-        android:layout_marginHorizontal="20dp"
-        android:textSize="35dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/toolbar"/>
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Abid Nafi"/>
 
     <ImageView
-        android:id="@+id/add_journal"
+        android:id="@+id/add_med"
         android:layout_width="40sp"
         android:layout_height="40sp"
-        android:layout_alignRight="@+id/title"
+        android:layout_alignEnd="@+id/greet"
+
         android:src="@drawable/ic_baseline_add_24"
         android:layout_below="@+id/toolbar"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="30dp"
         android:layout_alignParentEnd="true"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
-
-        android:layout_below="@+id/title"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
+        android:layout_marginTop="30dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"/>
-
-    <com.google.android.material.progressindicator.CircularProgressIndicator
-        android:id="@+id/circularProgressIndicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
-        android:layout_centerInParent="true"
-        android:visibility="gone"
-        app:showAnimationBehavior="outward"
-        app:hideAnimationBehavior="inward"
-        app:indicatorDirectionCircular="clockwise" />
+        android:layout_below="@+id/name"/>
 
 </RelativeLayout>

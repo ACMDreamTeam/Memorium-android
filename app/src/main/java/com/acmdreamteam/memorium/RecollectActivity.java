@@ -72,10 +72,6 @@ public class RecollectActivity extends AppCompatActivity {
     StorageReference storageReference;
 
 
-    private ArrayList<Journal> mJournal;
-
-    private JournalAdapter journalAdapter;
-
     CardView journal_card;
 
     FirebaseFirestore firestore;
@@ -107,8 +103,6 @@ public class RecollectActivity extends AppCompatActivity {
 
         profileImage = findViewById(R.id.profile_image_);
 
-        //recyclerView = findViewById(R.id.recyclerview);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         firestore = FirebaseFirestore.getInstance();
 
@@ -123,12 +117,19 @@ public class RecollectActivity extends AppCompatActivity {
                         String username_ = document.getString("username");
                         String age_ = document.getString("age");
                         String marsta_ = document.getString("Married");
+                        String spouse_name = document.getString("Spouse_Name");
                         String sibsta_ = document.getString("Have Siblings");
                         String imageUrl = document.getString("imageURL");
 
                         name.setText("Name: " + username_);
                         age.setText("Age: " + age_);
-                        marsta.setText("Marital Status: " + marsta_);
+
+                        if(marsta_.equals("Married")){
+                            marsta.setText("Marital Status: " + marsta_ +" to " + spouse_name);
+                        }else {
+                            marsta.setText("Marital Status: " + marsta_);
+                        }
+
                         sibsta.setText("Has Siblings?: " + sibsta_);
 
                         if(Objects.equals(imageUrl, "user")){
@@ -145,11 +146,10 @@ public class RecollectActivity extends AppCompatActivity {
 
 
 
-        mJournal = new ArrayList<>();
 
         dialog = new Dialog(this);
 
-        EventChangeListener();
+
 
         journal_card.setOnTouchListener(new View.OnTouchListener() {
             @SuppressLint("ClickableViewAccessibility")
@@ -190,27 +190,6 @@ public class RecollectActivity extends AppCompatActivity {
 
     }
 
-    private void EventChangeListener() {
-
-        firestore.collection("journal").document(firebaseUser.getUid()).collection("journal")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @SuppressLint("NotifyDataSetChanged")
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-
-                        assert value != null;
-                        for (DocumentChange documentChange : value.getDocumentChanges()){
-                            if (documentChange.getType() == DocumentChange.Type.ADDED){
-                                mJournal.add(documentChange.getDocument().toObject(Journal.class));
-                            }
-
-                            journalAdapter = new JournalAdapter(getApplicationContext(),firebaseUser,mJournal);
-                            //recyclerView.setAdapter(journalAdapter);
-                            journalAdapter.notifyDataSetChanged();
-                        }
-                    }
-                });
-    }
 
     private void onMediaSelect(){
 
