@@ -3,10 +3,10 @@ package com.acmdreamteam.memorium.Model;
 public class MedRem {
 
 
-    String name,med_id,med_type,time,food,frequency,number,weekday;
+    String name,med_id,med_type,time,food,frequency,number,weekday,create_date;
 
 
-    public MedRem(String name, String med_id, String med_type, String time, String food, String frequency, String number, String weekday) {
+    public MedRem(String name, String med_id, String med_type, String time, String food, String frequency, String number, String weekday,String create_date) {
         this.name = name;
         this.med_id = med_id;
         this.med_type = med_type;
@@ -15,6 +15,7 @@ public class MedRem {
         this.frequency = frequency;
         this.number = number;
         this.weekday = weekday;
+        this.create_date = create_date;
     }
 
     public MedRem() {
@@ -67,6 +68,14 @@ public class MedRem {
 
     public void setFrequency(String frequency) {
         this.frequency = frequency;
+    }
+
+    public String getCreate_date() {
+        return create_date;
+    }
+
+    public void setCreate_date(String create_date) {
+        this.create_date = create_date;
     }
 
     public String getNumber() {

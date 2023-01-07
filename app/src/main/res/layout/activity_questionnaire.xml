@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="gone"
+        android:visibility="invisible"
         android:layout_centerInParent="true"
         android:animateLayoutChanges="true"
         android:gravity="center_horizontal">
@@ -101,6 +101,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Next"
+
             android:layout_marginHorizontal="35dp"
             android:layout_marginTop="50dp"
             android:background="@drawable/primary_btn"

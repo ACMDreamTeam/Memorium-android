@@ -28,7 +28,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 
@@ -47,13 +51,22 @@ public class MedicineReminder extends AppCompatActivity {
     String food;
     String time;
 
-    String med_type_txt,weekday_txt;
+    String med_type_txt,weekday_txt,quan_txt;
 
-    Spinner getTypeOfMed,getWeekday;
+    int Adpater_pos;
 
-    RelativeLayout weekday_layout;
+    Spinner getTypeOfMed,getWeekday,getQuan;
+
+
+    RelativeLayout weekday_layout,amount_layout;
 
     String[] type_of_med = {"Tablet", "Syrup","Powder","Injection","Oinment","Other"};
+
+    String[] quan_tab = {"1/2 Pill", "1 Pill","2 Pill","3 Pill"};
+    String[] quan_inj = {"1", "2","3"};
+    String[] quan_syr = {"2.5 ml", "5 ml","10 ml","15 ml"};
+    String[] quan_pow = {"1/2 Spoon", "1 Spoon","1 1/2 Spoon","2 Spoon"};
+
     String[] weekday_list = {"Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
 
 
@@ -67,7 +80,7 @@ public class MedicineReminder extends AppCompatActivity {
 
 
         Med_Name = findViewById(R.id.name_txt);
-        number = findViewById(R.id.number);
+        //number = findViewById(R.id.number);
         Duration = findViewById(R.id.duration);
 
         Daily = findViewById(R.id.daily);
@@ -79,8 +92,10 @@ public class MedicineReminder extends AppCompatActivity {
 
         getWeekday = findViewById(R.id.weekday);
         getTypeOfMed = findViewById(R.id.typ_txt);
+        getQuan = findViewById(R.id.quanSpin);
 
         weekday_layout = findViewById(R.id.weekday_layout);
+        amount_layout = findViewById(R.id.amount_layout);
 
 
 
@@ -115,6 +130,67 @@ public class MedicineReminder extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 med_type_txt = type_of_med[position];
+
+
+                if(type_of_med[position].equals("Tablet")){
+
+                    amount_layout.setVisibility(View.VISIBLE);
+
+                    ArrayAdapter quan_ = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item, quan_tab);
+                    quan_.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    getQuan.setAdapter(quan_);
+
+                    Adpater_pos = 1;
+
+                }
+
+                if(type_of_med[position].equals("Syrup")){
+
+                    amount_layout.setVisibility(View.VISIBLE);
+
+                    ArrayAdapter quan_ = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item, quan_syr);
+                    quan_.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    getQuan.setAdapter(quan_);
+
+                    Adpater_pos = 2;
+
+                }
+
+                if(type_of_med[position].equals("Powder")){
+
+                    amount_layout.setVisibility(View.VISIBLE);
+
+                    ArrayAdapter quan_ = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item, quan_pow);
+                    quan_.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    getQuan.setAdapter(quan_);
+
+                    Adpater_pos = 3;
+
+                }
+
+                if(type_of_med[position].equals("Injection")){
+
+                    amount_layout.setVisibility(View.VISIBLE);
+
+                    ArrayAdapter quan_ = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item, quan_inj);
+                    quan_.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    getQuan.setAdapter(quan_);
+
+                    Adpater_pos = 4;
+
+                }
+
+                if(type_of_med[position].equals("Oinment")){
+
+                   amount_layout.setVisibility(View.GONE);
+
+                }
+
+                if(type_of_med[position].equals("Other")){
+
+                    amount_layout.setVisibility(View.GONE);
+
+                }
             }
 
             @Override
@@ -122,6 +198,30 @@ public class MedicineReminder extends AppCompatActivity {
 
             }
 
+        });
+
+        getQuan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(Adpater_pos == 1){
+                    quan_txt = quan_tab[position];
+                }
+                if(Adpater_pos == 2){
+                    quan_txt = quan_syr[position];
+                }
+                if(Adpater_pos == 3){
+                    quan_txt = quan_pow[position];
+                }
+                if(Adpater_pos == 4){
+                    quan_txt = quan_inj[position];
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
         });
 
         MaterialTimePicker materialTimePicker = new MaterialTimePicker.Builder().build();
@@ -219,11 +319,19 @@ public class MedicineReminder extends AppCompatActivity {
 
         String med_id = Randomizer(10);
 
+        Date c = Calendar.getInstance().getTime();
+
+
+
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
+        String formattedDate = df.format(c);
+
         Map<String, Object> journal = new HashMap<>();
         journal.put("name", Med_Name.getText().toString());
-        journal.put("number", number.getText().toString());
+        journal.put("number", quan_txt);
         journal.put("time",Duration.getText().toString());
         journal.put("med_id",med_id);
+        journal.put("create_date",formattedDate);
         journal.put("med_type",med_type_txt);
         journal.put("weekday",weekday_txt);
         journal.put("frequency", frequency);

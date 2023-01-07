@@ -70,10 +70,10 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.ViewHold
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN)  {
-                    holder.card.setBackgroundColor(mContext.getResources().getColor(R.color.onClick));
+                    holder.card.setCardBackgroundColor(mContext.getResources().getColor(R.color.onClick));
 
                 }else {
-                    holder.card.setBackgroundColor(mContext.getResources().getColor(R.color.white));
+                    holder.card.setCardBackgroundColor(mContext.getResources().getColor(R.color.white));
 
                 }
                 return false;
@@ -84,6 +84,7 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.ViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                holder.card.setCardBackgroundColor(mContext.getResources().getColor(R.color.white));
                 Intent intent = new Intent(mContext, JournalReadActivity.class);
                 intent.putExtra("journalID", journal.getJournalID());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

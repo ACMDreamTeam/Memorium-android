@@ -142,13 +142,24 @@ public class MedicineReminderViewActivity extends AppCompatActivity {
             }
         });
 
+        loadData();
+
+
+
+
+
+
+
+    }
+
+    private void loadData(){
 
         firestore.collection("user_data").document(firebaseUser.getUid()).collection("Medicine")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-
+                        mMedrem.clear();
                         assert value != null;
                         for (DocumentChange documentChange : value.getDocumentChanges()){
                             if (documentChange.getType() == DocumentChange.Type.ADDED){
@@ -163,8 +174,11 @@ public class MedicineReminderViewActivity extends AppCompatActivity {
                     }
                 });
 
+    }
 
-
-
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        loadData();
     }
 }

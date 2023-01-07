@@ -15,6 +15,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.acmdreamteam.memorium.JournalReadActivity;
+import com.acmdreamteam.memorium.MedicationViewActivity;
 import com.acmdreamteam.memorium.Model.Journal;
 import com.acmdreamteam.memorium.Model.MedRem;
 import com.acmdreamteam.memorium.R;
@@ -72,19 +73,19 @@ public class MedRemAdapter extends RecyclerView.Adapter<MedRemAdapter.ViewHolder
 
         if(medRem.getMed_type().equals("Tablet")){
             Glide.with(mContext).load(R.drawable.pills).into(holder.itype);
-            holder.no.setText(medRem.getNumber() + " Pill");
+            holder.no.setText(medRem.getNumber());
         }
         if(medRem.getMed_type().equals("Syrup")){
             Glide.with(mContext).load(R.drawable.syrup).into(holder.itype);
-            holder.no.setText(medRem.getNumber() + " ml");
+            holder.no.setText(medRem.getNumber());
         }
         if(medRem.getMed_type().equals("Powder")){
             Glide.with(mContext).load(R.drawable.powder).into(holder.itype);
-            holder.no.setText(medRem.getNumber() + " Spoon");
+            holder.no.setText(medRem.getNumber());
         }
         if(medRem.getMed_type().equals("Injection")){
             Glide.with(mContext).load(R.drawable.injection).into(holder.itype);
-            holder.no.setText("");
+            holder.no.setText(medRem.getNumber());
         }
         if(medRem.getMed_type().equals("Oinment")){
             Glide.with(mContext).load(R.drawable.ointment).into(holder.itype);
@@ -94,6 +95,18 @@ public class MedRemAdapter extends RecyclerView.Adapter<MedRemAdapter.ViewHolder
             Glide.with(mContext).load(R.drawable.pills).into(holder.itype);
             holder.no.setText("");
         }
+
+
+        holder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, MedicationViewActivity.class);
+                intent.putExtra("MedID",medRem.getMed_id());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mContext.startActivity(intent);
+            }
+        });
+
 
 
     }

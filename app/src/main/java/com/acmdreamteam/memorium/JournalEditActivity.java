@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,26 +15,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.andrognito.flashbar.Flashbar;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.datepicker.CalendarConstraints;
-import com.google.android.material.datepicker.DateValidatorPointBackward;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
-
-public class JournalAddActivity extends AppCompatActivity {
-
+public class JournalEditActivity extends AppCompatActivity {
 
     EditText title,things;
     CardView date_card;
@@ -42,15 +39,18 @@ public class JournalAddActivity extends AppCompatActivity {
 
     Button submit;
 
+    String JournalID;
+
     FirebaseFirestore firestore;
 
     FirebaseUser firebaseUser;
 
+    Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_journal_add);
-
+        setContentView(R.layout.activity_journal_edit);
 
         title = findViewById(R.id.title);
         things = findViewById(R.id.things);
@@ -60,7 +60,9 @@ public class JournalAddActivity extends AppCompatActivity {
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        intent = getIntent();
 
+        JournalID = intent.getStringExtra("JournalID");
 
 
 
@@ -70,15 +72,7 @@ public class JournalAddActivity extends AppCompatActivity {
         materialDateBuilder.setPositiveButtonText("Ok");
         materialDateBuilder.setSelection(MaterialDatePicker.todayInUtcMilliseconds());
         materialDateBuilder.setInputMode(MaterialDatePicker.INPUT_MODE_CALENDAR);
-
-        CalendarConstraints.Builder calendarConstraintsBuilder = new CalendarConstraints.Builder();
-        calendarConstraintsBuilder.setValidator(DateValidatorPointBackward.now());
-
-        materialDateBuilder.setCalendarConstraints(calendarConstraintsBuilder.build());
         final MaterialDatePicker<Long> materialDatePicker = materialDateBuilder.build();
-
-
-
 
 
         date_card = findViewById(R.id.date_card);
@@ -94,6 +88,29 @@ public class JournalAddActivity extends AppCompatActivity {
             }
         });
 
+
+        firestore.collection("user_data").document(firebaseUser.getUid()).collection("journal").document(JournalID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        String Title_ = document.getString("title");
+                        String Date_ = document.getString("date");
+                        String Things = document.getString("things");
+
+
+
+                        title.setText(Title_);
+                        date_txt.setText(Date_);
+                        things.setText(Things);
+
+
+                    }
+                }
+            }
+        });
+
         materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener<Long>() {
             @Override
             public void onPositiveButtonClick(Long selection) {
@@ -106,7 +123,7 @@ public class JournalAddActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                submitData();
+                submitData(JournalID);
             }
         });
 
@@ -115,8 +132,8 @@ public class JournalAddActivity extends AppCompatActivity {
 
     }
 
-    private void submitData() {
-        String JournalID = Randomizer(12);
+    private void submitData(String JournalID) {
+
         Map<String, Object> journal = new HashMap<>();
         journal.put("title",title.getText().toString());
         journal.put("things", things.getText().toString());
@@ -146,34 +163,4 @@ public class JournalAddActivity extends AppCompatActivity {
 
     }
 
-
-    private String Randomizer(int n) {
-        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890" + "abcdefghijklmnopqrstuvxyz";
-
-
-
-        // create random string builder
-        StringBuilder sb = new StringBuilder();
-
-        // create an object of Random class
-        Random random = new Random();
-
-        // specify length of random string
-
-        for(int i = 0; i < n; i++) {
-
-            // generate random index number
-            int index = random.nextInt(AlphaNumericString.length());
-
-            // get character specified by index
-            // from the string
-            char randomChar = AlphaNumericString.charAt(index);
-
-            // append the character to string builder
-            sb.append(randomChar);
-        }
-
-
-        return sb.toString();
-    }
 }

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/action_more"
+        android:icon="@drawable/ic_baseline_more_vert_24"
+        android:title=""
+        app:showAsAction="always">
+
+        <menu>
+
+            <item android:id="@+id/create_shortcut"
+                android:title="Make this shortcut"
+                android:icon="@drawable/ic_baseline_shortcut_24"
+                android:iconTint="@color/primary"
+                app:showAsAction="ifRoom"
+                />
+
+
+
+            <item
+                android:id="@+id/edit"
+                android:title="Edit"
+                app:showAsAction="ifRoom"
+                android:icon="@drawable/ic_baseline_edit_24"
+                android:iconTint="@color/primary"
+
+                />
+
+            <item android:id="@+id/Delete"
+
+                android:title="Delete Journal"
+                android:icon="@drawable/ic_baseline_delete_outline_24"
+                android:iconTint="@color/red"
+                app:showAsAction="ifRoom"
+
+
+                />
+
+        </menu>
+
+    </item>
+
+
+
+
+</menu>

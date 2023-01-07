@@ -105,12 +105,12 @@ public class JournalViewActivity extends AppCompatActivity {
 
     private void EventChangeListener() {
 
-        firestore.collection("user_data").document(firebaseUser.getUid()).collection("journal")
+        firestore.collection("user_data").document(firebaseUser.getUid()).collection("journal").orderBy("date")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public void onEvent(QuerySnapshot value, FirebaseFirestoreException error) {
-
+                        mJournal.clear();
                         assert value != null;
                         for (DocumentChange documentChange : value.getDocumentChanges()){
                             if (documentChange.getType() == DocumentChange.Type.ADDED){
@@ -125,10 +125,17 @@ public class JournalViewActivity extends AppCompatActivity {
                 });
     }
 
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        EventChangeListener();
+    }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-        startActivity(new Intent(JournalViewActivity.this,RecollectActivity.class));
+
     }
 }

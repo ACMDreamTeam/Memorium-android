@@ -65,7 +65,7 @@ public class RecollectActivity extends AppCompatActivity {
 
     ProgressDialog loadingBar;
 
-    //RecyclerView recyclerView;
+
 
     private static final int RC_PHOTO_PICKER =  105;
 
@@ -122,7 +122,7 @@ public class RecollectActivity extends AppCompatActivity {
                         String imageUrl = document.getString("imageURL");
 
                         name.setText("Name: " + username_);
-                        age.setText("Age: " + age_);
+                        age.setText("Date of Birth: " + age_);
 
                         if(marsta_.equals("Married")){
                             marsta.setText("Marital Status: " + marsta_ +" to " + spouse_name);
@@ -267,7 +267,7 @@ public class RecollectActivity extends AppCompatActivity {
         if (requestCode == RC_PHOTO_PICKER && resultCode == RESULT_OK && data != null) {
             Uri imageUri = data.getData();
             CropImage.activity(imageUri)
-                    .setGuidelines(CropImageView.Guidelines.ON)
+                    .setGuidelines(CropImageView.Guidelines.OFF)
                     .setAspectRatio(1, 1)
                     .start(this);
 

@@ -142,7 +142,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Camera"
+                    android:text="Scan"
                     android:layout_below="@+id/image2"
                     android:layout_centerHorizontal="true"
                     android:textSize="20dp"
@@ -152,6 +152,8 @@
 
         </androidx.cardview.widget.CardView>
 
+
+        <!--
 
         <androidx.cardview.widget.CardView
             android:id="@+id/add"
@@ -191,6 +193,45 @@
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
+        -->
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/journal"
+            android:layout_margin="10dp"
+            android:layout_columnWeight="1"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            app:cardCornerRadius="20dp"
+            android:padding="10dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+
+                >
+
+                <ImageView
+                    android:id="@+id/image3"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/journal"
+                    app:tint="@color/primary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Journal"
+                    android:layout_below="@+id/image3"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="20dp"
+                    android:textColor="@color/primary"
+                    />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/medrem"
@@ -222,7 +263,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Medicine Reminder"
+                    android:text="Medications"
                     android:layout_below="@+id/image4"
                     android:layout_centerHorizontal="true"
                     android:textSize="20dp"

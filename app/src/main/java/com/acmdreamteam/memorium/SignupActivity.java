@@ -34,6 +34,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.datepicker.CalendarConstraints;
+import com.google.android.material.datepicker.DateValidatorPointBackward;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -45,7 +49,9 @@ import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class SignupActivity extends AppCompatActivity {
@@ -100,6 +106,42 @@ public class SignupActivity extends AppCompatActivity {
         mUri = "user";
 
 
+        MaterialDatePicker.Builder<Long> materialDateBuilder = MaterialDatePicker.Builder.datePicker();
+
+        materialDateBuilder.setTitleText("Select the date");
+        materialDateBuilder.setPositiveButtonText("Ok");
+        materialDateBuilder.setSelection(MaterialDatePicker.todayInUtcMilliseconds());
+        materialDateBuilder.setInputMode(MaterialDatePicker.INPUT_MODE_CALENDAR);
+
+        CalendarConstraints.Builder calendarConstraintsBuilder = new CalendarConstraints.Builder();
+        calendarConstraintsBuilder.setValidator(DateValidatorPointBackward.now());
+
+        materialDateBuilder.setCalendarConstraints(calendarConstraintsBuilder.build());
+        final MaterialDatePicker<Long> materialDatePicker = materialDateBuilder.build();
+
+
+
+        age_.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    materialDatePicker.show(getSupportFragmentManager(),"Date of birth");
+                }
+            }
+        });
+
+
+        materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener<Long>() {
+            @Override
+            public void onPositiveButtonClick(Long selection) {
+                long date = materialDatePicker.getSelection();
+                SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
+                String formattedDate = df.format(date);
+
+                age_.setText(formattedDate);
+            }
+        });
+
         male = findViewById(R.id.male);
         female = findViewById(R.id.female);
 
@@ -107,6 +149,9 @@ public class SignupActivity extends AppCompatActivity {
 
         profile_image = findViewById(R.id.profile_image_);
         storageReference = FirebaseStorage.getInstance().getReference("/ProfileImages/"+ firebaseUser.getUid());
+
+
+        loadingBar = new ProgressDialog(this);
 
 
         edit_dp.setOnClickListener(new View.OnClickListener() {
@@ -117,30 +162,9 @@ public class SignupActivity extends AppCompatActivity {
         });
 
 
-
-
-
-
-
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //user = new User(username_.getText().toString(),age_.getText().toString(),gender,"");
-
-                //Log.d("name",username_.getText().toString());
-
-                /*
-
-                Intent intent = new Intent();
-                intent.putExtra("object",user);
-                intent.setClass(SignupActivity.this,QuestionnaireActivity.class);
-                startActivity(intent);
-
-                 */
-
-
-
 
 
                 submit_Data();
@@ -297,7 +321,7 @@ public class SignupActivity extends AppCompatActivity {
 
                             loadingBar.dismiss();
 
-                            recreate();
+
 
                         }
                     }
