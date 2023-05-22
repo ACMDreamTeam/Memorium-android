@@ -40,7 +40,6 @@ public class MedicineReminder extends AppCompatActivity {
 
     EditText Med_Name,number,Duration;
 
-
     RadioButton Daily,weekly,before_food,After_food;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();

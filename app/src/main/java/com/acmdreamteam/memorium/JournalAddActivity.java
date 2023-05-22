@@ -150,8 +150,6 @@ public class JournalAddActivity extends AppCompatActivity {
     private String Randomizer(int n) {
         String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890" + "abcdefghijklmnopqrstuvxyz";
 
-
-
         // create random string builder
         StringBuilder sb = new StringBuilder();
 
