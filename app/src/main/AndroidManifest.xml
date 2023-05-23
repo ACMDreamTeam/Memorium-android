@@ -6,7 +6,7 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
@@ -22,6 +22,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Memorium"
         tools:targetApi="31">
+        <activity
+            android:name=".RecogActivity"
+            android:exported="false" />
         <activity
             android:name=".MedicationViewActivity"
             android:exported="false">
@@ -93,13 +96,6 @@
         <activity
             android:name=".RecollectActivity"
             android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Camera"
-            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

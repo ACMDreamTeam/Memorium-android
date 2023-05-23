@@ -86,10 +86,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
         scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,Camera.class));
+                startActivity(new Intent(MainActivity.this,RecogActivity.class));
             }
         });
 
