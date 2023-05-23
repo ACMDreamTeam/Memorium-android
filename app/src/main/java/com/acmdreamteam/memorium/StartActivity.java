@@ -3,6 +3,7 @@ package com.acmdreamteam.memorium;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -40,6 +41,8 @@ public class StartActivity extends AppCompatActivity {
 
     ProgressBar googleSignLoader;
 
+    AppCompatButton login;
+
 
     @Override
     protected void onStart() {
@@ -71,6 +74,8 @@ public class StartActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
+        login = findViewById(R.id.login);
+
 
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(
                 GoogleSignInOptions.DEFAULT_SIGN_IN
@@ -87,6 +92,13 @@ public class StartActivity extends AppCompatActivity {
 
         });
 
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(StartActivity.this, "Coming soon! Please Sign in with Google", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
 

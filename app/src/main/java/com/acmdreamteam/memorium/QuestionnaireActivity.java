@@ -1,6 +1,7 @@
 package com.acmdreamteam.memorium;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,6 +30,8 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
     RadioButton yes,no,notSure,yes_,no_,notSure_;
 
+    AppCompatButton married_next,go_back,siblings_next;
+
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -38,8 +41,11 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
     SignupActivity signupActivity;
 
+    HashMap<String,String> data = new HashMap<>();
+
     User user;
 
+    boolean married_boolean = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +56,9 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
         married.setVisibility(View.VISIBLE);
 
+        married_next = findViewById(R.id.married_next);
+        siblings_next = findViewById(R.id.siblings_next);
+        go_back = findViewById(R.id.go_back);
 
         yes = findViewById(R.id.yes);
         no = findViewById(R.id.no);
@@ -68,23 +77,54 @@ public class QuestionnaireActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String name = spouse_name_txt.getText().toString();
-                HashMap<String,String> data = new HashMap<>();
+
                 data.put("Spouse_Name",name);
 
-                db.collection("users").document(firebaseUser.getUid()).set(data, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        spouse_name.setVisibility(View.INVISIBLE);
-                        siblings.setVisibility(View.VISIBLE);
-                    }
-                });
-
+                spouse_name.setVisibility(View.INVISIBLE);
+                siblings.setVisibility(View.VISIBLE);
 
             }
         });
 
 
 
+        married_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(married_boolean){
+                    married.setVisibility(View.INVISIBLE);
+                    spouse_name.setVisibility(View.VISIBLE);
+                }else {
+                    married.setVisibility(View.INVISIBLE);
+                    siblings.setVisibility(View.VISIBLE);
+                }
+
+
+            }
+        });
+
+
+        go_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                married.setVisibility(View.VISIBLE);
+                siblings.setVisibility(View.INVISIBLE);
+            }
+        });
+
+
+        siblings_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                db.collection("users").document(firebaseUser.getUid()).set(data, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        startActivity(new Intent(QuestionnaireActivity.this,MainActivity.class));
+                    }
+                });
+            }
+        });
 
         //user = (User) getIntent().getExtras().getSerializable("object");
 
@@ -96,6 +136,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
     }
 
     public void onQuestionAnswered(View view){
+
         switch (view.getId()){
 
             case R.id.yes:
@@ -103,19 +144,10 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
 
 
-                    HashMap<String,String> data = new HashMap<>();
+
                     data.put("Married","Married");
 
-                    db.collection("users").document(firebaseUser.getUid()).set(data, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-
-                        }
-                    });
-
-                    married.setVisibility(View.INVISIBLE);
-                    spouse_name.setVisibility(View.VISIBLE);
-
+                    married_boolean = true;
 
 
 
@@ -125,20 +157,9 @@ public class QuestionnaireActivity extends AppCompatActivity {
             case R.id.no:
                 if (no.isChecked()){
 
-                    HashMap<String,String> data = new HashMap<>();
+
                     data.put("Married","Single");
-
-                    db.collection("users").document(firebaseUser.getUid()).set(data, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            Toast.makeText(getApplicationContext(),"Updated",Toast.LENGTH_SHORT).show();
-
-                        }
-                    });
-
-                    married.setVisibility(View.INVISIBLE);
-                    siblings.setVisibility(View.VISIBLE);
-
+                    married_boolean = false;
 
 
 
@@ -151,19 +172,10 @@ public class QuestionnaireActivity extends AppCompatActivity {
                 if (notSure.isChecked()){
 
 
-                    HashMap<String,String> data = new HashMap<>();
+
                     data.put("Married","Not Sure");
+                    married_boolean = false;
 
-                    db.collection("users").document(firebaseUser.getUid()).set(data, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            Toast.makeText(getApplicationContext(),"Updated",Toast.LENGTH_SHORT).show();
-
-                        }
-                    });
-
-                    married.setVisibility(View.INVISIBLE);
-                    siblings.setVisibility(View.VISIBLE);
 
 
 
@@ -174,17 +186,9 @@ public class QuestionnaireActivity extends AppCompatActivity {
             case R.id.yes_:
                 if (yes_.isChecked()){
 
-                    HashMap<String,String> data = new HashMap<>();
+
                     data.put("Have Siblings","Yes");
 
-                    db.collection("users").document(firebaseUser.getUid()).set(data, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            Toast.makeText(getApplicationContext(),"Updated",Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-                    startActivity(new Intent(QuestionnaireActivity.this,MainActivity.class));
 
 
 
@@ -194,17 +198,9 @@ public class QuestionnaireActivity extends AppCompatActivity {
             case R.id.no_:
                 if (no_.isChecked()){
 
-                    HashMap<String,String> data = new HashMap<>();
+
                     data.put("Have Siblings","No");
 
-                    db.collection("users").document(firebaseUser.getUid()).set(data, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            Toast.makeText(getApplicationContext(),"Updated",Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-                    startActivity(new Intent(QuestionnaireActivity.this,MainActivity.class));
 
 
 
@@ -214,17 +210,9 @@ public class QuestionnaireActivity extends AppCompatActivity {
             case R.id.notSure_:
                 if (notSure_.isChecked()){
 
-                    HashMap<String,String> data = new HashMap<>();
+
                     data.put("Have Siblings","Not Sure");
 
-                    db.collection("users").document(firebaseUser.getUid()).set(data, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            Toast.makeText(getApplicationContext(),"Updated",Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-                    startActivity(new Intent(QuestionnaireActivity.this,MainActivity.class));
 
 
 
@@ -234,5 +222,11 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
 
         }
+
+
+
+
+
+
     }
 }
