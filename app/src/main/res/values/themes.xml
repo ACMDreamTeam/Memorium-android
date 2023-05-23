@@ -2,12 +2,12 @@
     <!-- Base application theme. -->
     <style name="Theme.Memorium" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#4682B4</item>
-        <item name="colorPrimaryVariant">#4682B4</item>
+        <item name="colorPrimary">#0F4674</item>
+        <item name="colorPrimaryVariant">#0F4674</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/secondary</item>
-        <item name="colorSecondaryVariant">@color/primary</item>
+        <item name="colorSecondaryVariant">#0F4674</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>

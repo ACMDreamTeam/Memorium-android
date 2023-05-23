@@ -563,7 +563,7 @@ public class RecogActivity extends AppCompatActivity implements ImageReader.OnIm
 
 
                     assert firebaseUser != null;
-                    db.collection("user_data").document(firebaseUser.getUid()).collection("face_data").document(name_)
+                    db.collection("user_data").document(firebaseUser.getUid()).collection("face_data").document(name)
                             .set(user)
                             .addOnSuccessListener(new OnSuccessListener() {
                                 @Override

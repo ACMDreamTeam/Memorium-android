@@ -5,262 +5,266 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#E6E6E6">
-
+    android:background="@color/white">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="85dp"
+        android:layout_height="50dp"
         android:id="@+id/toolbar"
+        android:background="#0F4674"
         tools:context=".ToolbarActivity">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginHorizontal="25dp"
-            android:background="@drawable/search_view"
-            android:drawableEnd="@drawable/ic_baseline_search_24"
-            android:paddingEnd="15dp"
-            android:paddingStart="15dp"
-            android:elevation="5dp"
-            android:singleLine="true"
-            />
-
-    </androidx.appcompat.widget.Toolbar>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/something"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_below="@+id/toolbar"
-        app:cardCornerRadius="15dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+                android:src="@drawable/memorium"/>
+
+
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
             <TextView
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
+                android:text="Good Evening, Abid Nafi!!"
+
+
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="#0F4674"
                 android:textAlignment="center"
                 android:fontFamily="@font/nunito_sans"
-                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:textSize="30dp"
                 />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_below="@id/name"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                />
+
+
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/scan"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:cardCornerRadius="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_below="@+id/profile_image">
+
+
+
+
+
+                <ImageView
+                    android:id="@+id/image1"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:src="@drawable/capture"
+                    android:scaleType="centerCrop"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/scan_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/capture_img"
+                        android:layout_marginTop="50dp"
+                        android:layout_centerHorizontal="true"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Click to Recognize"
+                        android:layout_below="@+id/scan_img"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/white"
+
+                        />
+
+                </RelativeLayout>
+
+
+
+
+
+            </androidx.cardview.widget.CardView>
+
+
+
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/recollect"
+                android:layout_below="@+id/scan"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="25dp"
+                android:layout_height="100dp"
+                android:padding="10dp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+
+                    >
+
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_baseline_account_circle_24"
+                        app:tint="@color/primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="About me"
+                        android:layout_below="@+id/image"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="20dp"
+                        android:textColor="@color/primary"
+                        />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+
+
+            <RelativeLayout
+                android:id="@+id/journal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/recollect">
+
+
+
+
+                <ImageView
+                    android:id="@+id/image3"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/journal_img"
+                    />
+
+                <ImageView
+                    android:id="@+id/journal_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/journal_add"
+
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Draft a Journal Entry"
+                    android:layout_below="@+id/journal_add"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+
+                    />
+
+
+
+            </RelativeLayout>
+
+
+
+
+            <RelativeLayout
+                android:id="@+id/medrem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/journal"
+                android:layout_marginBottom="80dp"
+                android:layout_marginTop="10dp">
+
+
+
+                <ImageView
+
+
+                    android:layout_width="match_parent"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_height="110dp"
+                    android:background="@drawable/medicines"/>
+
+
+                <ImageView
+                    android:id="@+id/med_shield"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/med_shield"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Set up Pill Reminders"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/med_shield"/>
+
+            </RelativeLayout>
+
+
+
+
+
         </RelativeLayout>
-    </androidx.cardview.widget.CardView>
-
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/recollect"
-            android:layout_below="@+id/something"
-            android:layout_width="match_parent"
-            android:layout_margin="10dp"
-            app:cardCornerRadius="25dp"
-            android:layout_height="100dp"
-            android:padding="10dp"
-            >
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-
-                >
-
-                <ImageView
-                    android:id="@+id/image"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/ic_baseline_account_circle_24"
-                    app:tint="@color/primary" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="About me"
-                    android:layout_below="@+id/image"
-                    android:layout_centerHorizontal="true"
-                    android:textSize="20dp"
-                    android:textColor="@color/primary"
-                    />
-            </RelativeLayout>
-
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/scan"
-            android:layout_margin="10dp"
-            app:cardCornerRadius="25dp"
-            android:layout_below="@+id/recollect"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:padding="10dp"
-            >
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-
-                >
-
-                <ImageView
-                    android:id="@+id/image2"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/ic_baseline_camera_alt_24" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Scan"
-                    android:layout_below="@+id/image2"
-                    android:layout_centerHorizontal="true"
-                    android:textSize="20dp"
-                    android:textColor="@color/primary"
-                    />
-            </RelativeLayout>
-
-        </androidx.cardview.widget.CardView>
-
-
-        <!--
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/add"
-            android:layout_below="@+id/scan"
-            android:layout_margin="10dp"
-            android:layout_centerHorizontal="true"
-            android:layout_columnWeight="1"
-            android:layout_width="0dp"
-            android:layout_height="180dp"
-            app:cardCornerRadius="20dp"
-            android:padding="10dp"
-            >
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-
-                >
-
-                <ImageView
-                    android:id="@+id/image3"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/ic_baseline_add_24" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add"
-                    android:layout_below="@+id/image3"
-                    android:layout_centerHorizontal="true"
-                    android:textSize="20dp"
-                    android:textColor="@color/primary"
-                    />
-            </RelativeLayout>
-
-        </androidx.cardview.widget.CardView>
-        -->
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/journal"
-            android:layout_margin="10dp"
-            android:layout_below="@+id/scan"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            app:cardCornerRadius="20dp"
-            android:padding="10dp"
-            >
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-
-                >
-
-                <ImageView
-                    android:id="@+id/image3"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/journal"
-                    app:tint="@color/primary" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Journal"
-                    android:layout_below="@+id/image3"
-                    android:layout_centerHorizontal="true"
-                    android:textSize="20dp"
-                    android:textColor="@color/primary"
-                    />
-            </RelativeLayout>
-
-        </androidx.cardview.widget.CardView>
+    </ScrollView>
 
 
 
 
 
-    <RelativeLayout
-        android:id="@+id/medrem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/journal">
 
 
 
-        <ImageView
 
-
-            android:layout_width="match_parent"
-            android:layout_marginHorizontal="20dp"
-            android:layout_height="110dp"
-            android:background="@drawable/medicines"/>
-
-
-        <ImageView
-            android:id="@+id/med_shield"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/med_shield"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Set up Pill Reminders"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/med_shield"/>
-
-    </RelativeLayout>
 
 
 

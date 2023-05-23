@@ -40,6 +40,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.Calendar;
 import java.util.Objects;
 
 
@@ -55,11 +56,11 @@ public class MainActivity extends AppCompatActivity {
 
     TextView name;
 
-    CardView recollect,add,scan,journal;
+    CardView recollect,add,scan;
 
 
 
-    RelativeLayout medrem;
+    RelativeLayout medrem,journal;
     CircleImageView profile_image;
 
 
@@ -145,7 +146,26 @@ public class MainActivity extends AppCompatActivity {
                         String Username = document.getString("username");
                         String Imageurl = document.getString("imageURL");
 
-                        name.setText("Welcome " + Username);
+
+                        Calendar c = Calendar.getInstance();
+                        int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
+
+                        if(timeOfDay >= 0 && timeOfDay < 12){
+
+                            name.setText("Good morning, "+ Username + "!");
+
+                        }else if(timeOfDay >= 12 && timeOfDay < 16){
+                            name.setText("Good Afternoon, " + Username + "!");
+
+                        }else if(timeOfDay >= 16 && timeOfDay < 24){
+                            name.setText("Good Evening, "+ Username + "!");
+
+                        }else if(timeOfDay >= 21 && timeOfDay < 24){
+                            name.setText("Good Night, " + Username + "!");
+                        }
+
+
+
 
 
                         if(Objects.equals(Imageurl, "user")){
