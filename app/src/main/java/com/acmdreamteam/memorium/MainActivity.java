@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView name;
 
-    CardView recollect,add,scan;
+    CardView scan;
 
 
 
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
         name = findViewById(R.id.name);
 
-        recollect = findViewById(R.id.recollect);
+        //recollect = findViewById(R.id.recollect);
         //add = findViewById(R.id.add);
 
         journal = findViewById(R.id.journal);
@@ -117,12 +117,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,JournalViewActivity.class));
             }
         });
+
+        /*
         recollect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, RecollectActivity.class));
             }
         });
+
+         */
 
         medrem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,6 +181,14 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 }
+            }
+        });
+        
+        
+        profile_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,RecollectActivity.class));
             }
         });
 

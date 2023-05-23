@@ -72,7 +72,7 @@ public class RecollectActivity extends AppCompatActivity {
     StorageReference storageReference;
 
 
-    CardView journal_card;
+    CardView journal_card,logout_card;
 
     FirebaseFirestore firestore;
 
@@ -102,6 +102,8 @@ public class RecollectActivity extends AppCompatActivity {
         edit_dp = findViewById(R.id.edit_dp);
 
         profileImage = findViewById(R.id.profile_image_);
+
+        logout_card = findViewById(R.id.logout_card);
 
 
         firestore = FirebaseFirestore.getInstance();
@@ -181,6 +183,15 @@ public class RecollectActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onMediaSelect();
+            }
+        });
+
+
+        logout_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(RecollectActivity.this,StartActivity.class));
             }
         });
 

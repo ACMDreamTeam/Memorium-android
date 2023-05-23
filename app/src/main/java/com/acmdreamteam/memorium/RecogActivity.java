@@ -20,6 +20,7 @@ import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
@@ -488,6 +489,7 @@ public class RecogActivity extends AppCompatActivity implements ImageReader.OnIm
     private void registerFaceDialogue(Bitmap croppedFace, FaceClassifier.Recognition rec) {
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.register_face_dialogue);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         ImageView ivFace = dialog.findViewById(R.id.dlg_image);
         EditText nameEd = dialog.findViewById(R.id.dlg_input);
         Button register = dialog.findViewById(R.id.button2);
