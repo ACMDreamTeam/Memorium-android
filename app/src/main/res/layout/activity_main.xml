@@ -62,25 +62,15 @@
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/something"
-        android:layout_marginTop="20dp"
-        android:rowCount="2"
-        android:columnCount="2"
-        android:layout_centerVertical="true"
 
-       >
 
         <androidx.cardview.widget.CardView
             android:id="@+id/recollect"
-            android:layout_centerHorizontal="true"
-            android:layout_width="0dp"
+            android:layout_below="@+id/something"
+            android:layout_width="match_parent"
             android:layout_margin="10dp"
-            android:layout_columnWeight="1"
             app:cardCornerRadius="25dp"
-            android:layout_height="180dp"
+            android:layout_height="100dp"
             android:padding="10dp"
             >
 
@@ -118,10 +108,8 @@
             android:layout_margin="10dp"
             app:cardCornerRadius="25dp"
             android:layout_below="@+id/recollect"
-            android:layout_centerHorizontal="true"
-            android:layout_width="0dp"
-            android:layout_columnWeight="1"
-            android:layout_height="180dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
             android:padding="10dp"
             >
 
@@ -198,9 +186,9 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/journal"
             android:layout_margin="10dp"
-            android:layout_columnWeight="1"
-            android:layout_width="0dp"
-            android:layout_height="180dp"
+            android:layout_below="@+id/scan"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
             app:cardCornerRadius="20dp"
             android:padding="10dp"
             >
@@ -233,16 +221,61 @@
 
         </androidx.cardview.widget.CardView>
 
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/medrem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/journal">
+
+
+
+        <ImageView
+
+
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_height="110dp"
+            android:background="@drawable/medicines"/>
+
+
+        <ImageView
+            android:id="@+id/med_shield"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/med_shield"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set up Pill Reminders"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/med_shield"/>
+
+    </RelativeLayout>
+
+
+
+    <!--
+
         <androidx.cardview.widget.CardView
             android:id="@+id/medrem"
-            android:layout_below="@+id/scan"
+            android:layout_below="@+id/journal"
             android:layout_margin="10dp"
-            android:layout_centerHorizontal="true"
-            android:layout_columnWeight="1"
-            android:layout_width="0dp"
-            android:layout_height="180dp"
+
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:cardCornerRadius="20dp"
-            android:padding="10dp"
+            android:background="@drawable/medicines"
             >
 
             <RelativeLayout
@@ -254,29 +287,21 @@
 
                 <ImageView
                     android:id="@+id/image4"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_centerInParent="true"
-                    android:padding="5dp"
-                    android:src="@drawable/medrem" />
+                    android:src="@drawable/medicines" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Medications"
-                    android:layout_below="@+id/image4"
-                    android:layout_centerHorizontal="true"
-                    android:textSize="20dp"
-                    android:textColor="@color/primary"
-                    />
+
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
 
+        -->
 
 
 
-    </GridLayout>
+
 
 
 

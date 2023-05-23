@@ -14,6 +14,8 @@
         <!-- Customize your theme here. -->
     </style>
 
+
+
     <style name="Theme.Memorium.Toolbar" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#4682B4</item>
@@ -53,11 +55,11 @@
 
     <style name="Theme.Memorium.Launcher" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#4682B4</item>
-        <item name="colorPrimaryVariant">#4682B4</item>
+        <item name="colorPrimary">#0F4674</item>
+        <item name="colorPrimaryVariant">#0F4674</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/primary</item>
+        <item name="colorSecondary">#0F4674</item>
         <item name="colorSecondaryVariant">@color/secondary</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->

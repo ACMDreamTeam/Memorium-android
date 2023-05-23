@@ -14,7 +14,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "909712011152-9ae78slihmtqdauunrbh5qkottmh6na0.apps.googleusercontent.com",
+          "client_id": "909712011152-o5jip18m0ln9ktr5v4fnks5kokrb94p8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.acmdreamteam.memorium",
@@ -22,11 +22,11 @@
           }
         },
         {
-          "client_id": "909712011152-of9nidkqbmhhq52tn6501e1sb66rini8.apps.googleusercontent.com",
+          "client_id": "909712011152-sm30sairt68r3pnhq22h2c12an3ap8m8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.acmdreamteam.memorium",
-            "certificate_hash": "6afdd42d581b64a0079129087d88a4621d3b7630"
+            "certificate_hash": "ae4201b358c4f4eafc1bb14f316cfd7ab8a718c9"
           }
         },
         {

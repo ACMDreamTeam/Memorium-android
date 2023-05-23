@@ -10,6 +10,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,8 +55,11 @@ public class MainActivity extends AppCompatActivity {
 
     TextView name;
 
-    CardView recollect,add,scan,medrem,journal;
+    CardView recollect,add,scan,journal;
 
+
+
+    RelativeLayout medrem;
     CircleImageView profile_image;
 
 
