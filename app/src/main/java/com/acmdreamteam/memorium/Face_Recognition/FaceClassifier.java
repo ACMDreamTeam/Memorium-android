@@ -71,7 +71,9 @@ public interface FaceClassifier {
             }
 
             if (distance != null) {
-                resultString += String.format("(%.1f%%) ", distance * 100.0f);
+                //resultString += String.format("(%.1f%%) ", distance * 100.0f);
+
+                resultString = "";
             }
 
             if (location != null) {

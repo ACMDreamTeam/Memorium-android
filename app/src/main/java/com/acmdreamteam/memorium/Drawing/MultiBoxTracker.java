@@ -156,8 +156,8 @@ public class MultiBoxTracker {
 
       final String labelString =
           !TextUtils.isEmpty(recognition.title)
-              ? String.format("%s %.2f", recognition.title, recognition.detectionConfidence)
-              : String.format("%.2f", recognition.detectionConfidence);
+              ? String.format("%s", recognition.title, " ")
+              : String.format(" ");
 
       Log.d("tryDrawRect",labelString);
       borderedText.drawText(

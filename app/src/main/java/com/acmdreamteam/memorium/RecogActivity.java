@@ -459,7 +459,7 @@ public class RecogActivity extends AppCompatActivity implements ImageReader.OnIm
             if(registerFace){
                 registerFaceDialogue(crop,result);
             }else {
-                if (result.getDistance() < 0.75f) {
+                if (result.getDistance() < 0.99f) {
                     confidence = result.getDistance();
                     title = result.getTitle();
                 }
