@@ -69,8 +69,8 @@
 
     <style name="Theme.Memorium.Journal" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#4682B4</item>
-        <item name="colorPrimaryVariant">#4682B4</item>
+        <item name="colorPrimary">#0F4674</item>
+        <item name="colorPrimaryVariant">#0F4674</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

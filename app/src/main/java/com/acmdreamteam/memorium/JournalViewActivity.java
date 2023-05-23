@@ -56,7 +56,7 @@ public class JournalViewActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        profileImage = findViewById(R.id.profile_image);
+        //profileImage = findViewById(R.id.profile_image);
 
         add_journal = findViewById(R.id.add_journal);
 
@@ -67,6 +67,8 @@ public class JournalViewActivity extends AppCompatActivity {
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+
+        /*
         FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
         rootRef.collection("users").document(firebaseUser.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -90,6 +92,8 @@ public class JournalViewActivity extends AppCompatActivity {
                 }
             }
         });
+
+         */
 
         add_journal.setOnClickListener(new View.OnClickListener() {
             @Override

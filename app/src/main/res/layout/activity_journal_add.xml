@@ -14,14 +14,28 @@
             android:id="@+id/title_page"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Journal"
+            android:text="Journal Entry"
             android:textColor="@color/black"
-            android:fontFamily="@font/nunito_sans"
+            android:fontFamily="@font/open_sans"
             android:layout_centerHorizontal="true"
             android:textSize="40sp"
-            android:textStyle="bold"
             android:layout_marginTop="20dp"/>
 
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/title"
+            android:layout_below="@+id/title_page"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:padding="15dp"
+            android:layout_marginHorizontal="25sp"
+            android:hint="Title"
+
+            android:background="@drawable/edit_text"
+            android:maxLines="1"
+            android:backgroundTint="#F6F6F6"
+            android:layout_marginTop="40dp"/>
+
+        <!--
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/title_"
             android:layout_width="match_parent"
@@ -41,10 +55,13 @@
                 android:inputType="text"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
+        -->
+
+        <!--
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/things_"
-            android:layout_below="@+id/title_"
+            android:layout_below="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
@@ -61,6 +78,22 @@
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
+        -->
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/things"
+            android:layout_below="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginHorizontal="25sp"
+            android:hint="Notes"
+            android:background="@drawable/edit_text"
+
+            android:inputType="textMultiLine"
+            android:backgroundTint="#F6F6F6"
+            android:layout_marginTop="40dp"/>
+
 
         <androidx.cardview.widget.CardView
             android:id="@+id/date_card"
@@ -71,7 +104,7 @@
             app:cardBackgroundColor="@color/secondary"
             app:cardCornerRadius="15dp"
             android:layout_marginTop="20dp"
-            android:layout_below="@+id/things_">
+            android:layout_below="@+id/things">
 
             <RelativeLayout
                 android:layout_width="match_parent"
