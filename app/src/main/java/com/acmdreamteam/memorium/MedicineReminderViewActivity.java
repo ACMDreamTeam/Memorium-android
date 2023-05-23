@@ -74,7 +74,7 @@ public class MedicineReminderViewActivity extends AppCompatActivity {
 
         add_med = findViewById(R.id.add_med);
 
-        profile_image = findViewById(R.id.profile_image);
+        //profile_image = findViewById(R.id.profile_image);
         greet = findViewById(R.id.greet);
 
         Calendar c = Calendar.getInstance();
@@ -123,15 +123,19 @@ public class MedicineReminderViewActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
                         String Name = document.getString("username");
-                        String ImageURl = document.getString("imageURL");
+                        //String ImageURl = document.getString("imageURL");
 
                         name.setText(Name);
+
+                        /*
 
                         if(Objects.equals(ImageURl, "user")){
                             Glide.with(getApplicationContext()).load(getApplicationContext().getDrawable(R.drawable.ic_baseline_account_circle_24)).into(profile_image);
                         }else {
                             Glide.with(getApplicationContext()).load(ImageURl).into(profile_image);
                         }
+
+                         */
 
 
 
