@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    RelativeLayout medrem,journal;
+    RelativeLayout medrem,journal,myMemorium;
     CircleImageView profile_image;
 
 
@@ -90,13 +90,21 @@ public class MainActivity extends AppCompatActivity {
 
         profile_image = findViewById(R.id.profile_image);
 
-
+        myMemorium = findViewById(R.id.myMemorium);
 
 
         scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this,RecogActivity.class));
+            }
+        });
+
+
+        myMemorium.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,PeoplesActivity.class));
             }
         });
 

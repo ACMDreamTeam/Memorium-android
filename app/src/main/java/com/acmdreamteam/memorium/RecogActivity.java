@@ -660,4 +660,10 @@ public class RecogActivity extends AppCompatActivity implements ImageReader.OnIm
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
     }
 
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(RecogActivity.this,MainActivity.class));
+    }
 }

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PeoplesActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/toolbar"
+        android:background="#0F4674"
+        tools:context=".ToolbarActivity">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+                android:src="@drawable/memorium"/>
+
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="20dp"
+
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/nunito_sans"
+        android:text="My Memorium"
+        android:textColor="#0F4674"
+        android:textSize="30dp" />
+
+
+    <ImageView
+        android:id="@+id/capture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/capture_img"
+        app:tint="@color/black"
+        android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+
+        />
+
+    <TextView
+        android:id="@+id/capture_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add New Face"
+        android:layout_below="@+id/capture"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/nunito_sans"
+        android:textSize="18dp"/>
+    
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/capture_txt"
+        android:layout_marginTop="20dp"/>
+
+
+
+
+
+</RelativeLayout>

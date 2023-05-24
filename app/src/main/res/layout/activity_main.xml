@@ -110,9 +110,8 @@
 
             </androidx.cardview.widget.CardView>
 
-
             <RelativeLayout
-                android:id="@+id/journal"
+                android:id="@+id/myMemorium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/scan"
@@ -120,11 +119,31 @@
 
 
                 <ImageView
+                    android:id="@+id/image2"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginHorizontal="20dp"
+                    android:src="@drawable/my_memorium_stack" />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/journal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/myMemorium"
+                android:layout_marginTop="15dp">
+
+
+                <ImageView
                     android:id="@+id/image3"
                     android:layout_width="match_parent"
                     android:layout_height="110dp"
-                    android:layout_marginHorizontal="20dp"
                     android:layout_centerInParent="true"
+                    android:layout_marginHorizontal="20dp"
                     android:src="@drawable/journal_img" />
 
                 <ImageView
