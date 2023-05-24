@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -24,9 +25,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthCredential;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.rpc.context.AttributeContext;
 
 import java.util.Calendar;
 import java.util.Objects;
@@ -81,6 +84,7 @@ public class StartActivity extends AppCompatActivity {
                 GoogleSignInOptions.DEFAULT_SIGN_IN
         ).requestIdToken("909712011152-b500qorah01hr3f5ln7nq6nsie6git5u.apps.googleusercontent.com")
                 .requestEmail()
+                .requestProfile()
                 .build();
 
         googleSignInClient = GoogleSignIn.getClient(StartActivity.this,googleSignInOptions);
@@ -126,6 +130,8 @@ public class StartActivity extends AppCompatActivity {
                                         String s = "Google Authentication successful";
                                         googleSignLoader.setVisibility(View.INVISIBLE);
                                         displayToast(s);
+                                        googleSignInClient.revokeAccess();
+
 
 
                                         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
