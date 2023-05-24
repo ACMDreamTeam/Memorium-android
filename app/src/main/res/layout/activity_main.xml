@@ -119,15 +119,12 @@
                 android:layout_marginTop="15dp">
 
 
-
-
                 <ImageView
                     android:id="@+id/image3"
                     android:layout_width="match_parent"
                     android:layout_height="110dp"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/journal_img"
-                    />
+                    android:src="@drawable/journal_img" />
 
                 <ImageView
                     android:id="@+id/journal_add"

@@ -492,18 +492,23 @@ public class RecogActivity extends AppCompatActivity implements ImageReader.OnIm
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         ImageView ivFace = dialog.findViewById(R.id.dlg_image);
         EditText nameEd = dialog.findViewById(R.id.dlg_input);
+        EditText phoneEd = dialog.findViewById(R.id.dlg_phone);
+        EditText notesEd = dialog.findViewById(R.id.dlg_notes);
         Button register = dialog.findViewById(R.id.button2);
         ivFace.setImageBitmap(croppedFace);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String name = nameEd.getText().toString();
+                String phone = phoneEd.getText().toString();
+                String notes = notesEd.getText().toString();
+
                 if (name.isEmpty()) {
                     nameEd.setError("Enter Name");
                     return;
                 }
                 faceClassifier.register(name, rec);
-                saveFave(name,croppedFace);
+                saveFave(name,croppedFace,phone,notes);
                 Toast.makeText(RecogActivity.this, "Face Registered Successfully", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             }
@@ -532,7 +537,7 @@ public class RecogActivity extends AppCompatActivity implements ImageReader.OnIm
     }
 
 
-    private void saveFave(String name, Bitmap croppedFace) {
+    private void saveFave(String name, Bitmap croppedFace,String phone,String notes) {
 
 
         Uri resultUri = getImageUri(getApplicationContext(),croppedFace);
@@ -562,6 +567,8 @@ public class RecogActivity extends AppCompatActivity implements ImageReader.OnIm
                     Map<String, String> user = new HashMap<>();
                     user.put("name",name);
                     user.put("imageURL",mUri);
+                    user.put("phoneNo",phone);
+                    user.put("notes",notes);
 
 
                     assert firebaseUser != null;
