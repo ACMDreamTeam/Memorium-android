@@ -32,7 +32,7 @@ public class PeopleViewActivity extends AppCompatActivity {
 
     CircleImageView face_view;
 
-    AppCompatButton back;
+    AppCompatButton back,delete;
 
 
     @Override
@@ -50,11 +50,19 @@ public class PeopleViewActivity extends AppCompatActivity {
         nameID = intent.getStringExtra("name");
 
         back = findViewById(R.id.back);
+        delete = findViewById(R.id.delete);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deletePerson();
             }
         });
 
@@ -86,5 +94,9 @@ public class PeopleViewActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void deletePerson(){
+        firestore.collection("user_data").document(firebaseUser.getUid()).collection("face_data").document(nameID).delete();
     }
 }

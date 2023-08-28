@@ -1,15 +1,15 @@
 package com.acmdreamteam.memorium;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -18,8 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.margsapp.iosdialog.iOSDialog;
-import com.margsapp.iosdialog.iOSDialogListener;
+
 
 import java.util.Objects;
 
@@ -73,6 +72,35 @@ public class MedicationViewActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                /*
+                SimpleAlertDialog.Builder
+                        .with(MedicationViewActivity.this)
+                        .setTitle("Delete Medicine")
+                        .setDescription("Are you sure you want to delete this medicine?")
+                        .setPositiveText("Yes")
+                        .setNegativeText("No")
+                        .setPositiveButtonColor(getResources().getColor(R.color.pBtn))
+                        .setNegativeButtonColor(getResources().getColor(R.color.nBtn))
+                        .setPositiveButtonTextColor(getResources().getColor(R.color.white))
+                        .setNegativeButtonTextColor(getResources().getColor(R.color.black))
+                        .setBackgroundColor(getResources().getColor(R.color.white))
+                        .onPositiveClicked(new SimpleAlertDialogListener() {
+                            @Override
+                            public void onClick(Dialog dialog) {
+                                deleteMedicine();
+                            }
+                        })
+                        .onNegativeClicked(new SimpleAlertDialogListener() {
+                            @Override
+                            public void onClick(Dialog dialog) {
+                                //Do Nothing
+                            }
+                        })
+                        .isCancellable(true)
+                        .setTitleColor(getColor(R.color.black))
+                        .setDescriptionColor(getColor(R.color.black))
+                        .build();
+                /*
                 iOSDialog.Builder
                         .with(MedicationViewActivity.this)
                         .setTitle("Delete Medicine")
@@ -103,11 +131,24 @@ public class MedicationViewActivity extends AppCompatActivity {
                         .build()
                         .show();
 
+                 */
+
             }
         });
 
 
 
+
+    }
+
+    private void deleteMedicine() {
+        firestore = FirebaseFirestore.getInstance();
+        firestore.collection("user_data").document(firebaseUser.getUid()).collection("Medicine").document(MedID).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                finish();
+            }
+        });
 
     }
 

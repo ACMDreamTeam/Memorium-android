@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:background="@drawable/dialog_back"
+    android:backgroundTint="@color/white"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="35dp"
+
+        tools:text="Title"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:fontFamily="@font/open_sans"/>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_below="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:textSize="15dp"
+        android:layout_marginHorizontal="10dp"
+        android:fontFamily="@font/open_sans"
+        android:textColor="@color/black"
+        tools:text="This is a simple sample message to show as an example for description"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/description"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="15dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/go_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Yes"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:fontFamily="@font/open_sans"
+            android:textAllCaps="false"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/new_btn"/>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/siblings_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="No"
+            android:layout_marginHorizontal="15dp"
+            android:textColor="@color/black"
+            android:textAllCaps="false"
+            android:fontFamily="@font/open_sans"
+            android:layout_weight="1"
+            android:background="@drawable/new_alt_btn"/>
+
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

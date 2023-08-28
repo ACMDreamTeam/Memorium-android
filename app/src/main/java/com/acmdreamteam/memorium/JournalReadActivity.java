@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,8 +31,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.margsapp.iosdialog.iOSDialog;
-import com.margsapp.iosdialog.iOSDialogListener;
+
 
 import java.util.EventListener;
 import java.util.Objects;
@@ -45,13 +45,16 @@ public class JournalReadActivity extends AppCompatActivity {
 
     TextView title,date,things;
 
-    String journalID,Title;
+    String journalID,Title = "Loading...";
 
     Intent intent;
 
 
 
     ShortcutManager shortcutManager;
+
+
+    Toolbar toolbar;
 
 
 
@@ -67,46 +70,19 @@ public class JournalReadActivity extends AppCompatActivity {
         intent = getIntent();
         journalID = intent.getStringExtra("journalID");
 
-        JournalReadActivity.this.setTitle("Journal");
+        JournalReadActivity.this.setTitle(Title);
 
         title = findViewById(R.id.title);
         date = findViewById(R.id.date);
         things = findViewById(R.id.things);
 
+        toolbar = findViewById(R.id.toolbar);
 
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N_MR1) {
             shortcutManager = getSystemService(ShortcutManager.class);
         }
 
-
-        /*
-
-        FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
-        rootRef.collection("users").document(firebaseUser.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-
-                        String Imageurl = document.getString("imageURL");
-
-
-
-                        if(Objects.equals(Imageurl, "user")){
-                            Glide.with(getApplicationContext()).load(getApplicationContext().getDrawable(R.drawable.ic_baseline_account_circle_24)).into(profileImage);
-                        }else {
-                            Glide.with(getApplicationContext()).load(Imageurl).into(profileImage);
-                        }
-
-
-                    }
-                }
-            }
-        });
-
-         */
 
         LoadData();
 
@@ -125,6 +101,8 @@ public class JournalReadActivity extends AppCompatActivity {
                         String Date_ = document.getString("date");
                         String Things = document.getString("things");
                         Title = Title_;
+
+
 
 
                         title.setText(Title_);
@@ -167,6 +145,10 @@ public class JournalReadActivity extends AppCompatActivity {
                 break;
 
             case R.id.Delete:
+
+
+
+                /*
                 iOSDialog.Builder
                         .with(this)
                         .setTitle("Delete Journal")
@@ -190,6 +172,8 @@ public class JournalReadActivity extends AppCompatActivity {
                         .isCancellable(true)
                         .build()
                         .show();
+
+                 */
 
                 break;
 
